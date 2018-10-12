@@ -7,7 +7,7 @@
 #include <xs>
 
 #define PLUGINNAME		"【AST】加枪模板"
-#define VERSION			"1.39"
+#define VERSION			"1.38"
 #define AUTHOR			"Fly"
 
 #define KNIFE_COMMAND		"normal_knife"
