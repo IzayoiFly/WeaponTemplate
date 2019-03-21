@@ -3,56 +3,56 @@
 #endif
 #define _WPN_CONST_included
 
-// ×î´óÎäÆ÷Á¿
+/* æœ€å¤§æ­¦å™¨é‡ */
 #define MAXWEAPON			128
 
-// ÊÂ¼ş·µ»ØÖµ
+/* äº‹ä»¶è¿”å›å€¼ */
 #define WPN_IGNORED			0
 #define WPN_SUPERCEDE			1
 #define WPN_HANDLED			2
 
-// »ñÈ¡ÎäÆ÷ĞòºÅµÄÄ£°åĞòºÅÀàĞÍ
+/* è·å–æ­¦å™¨åºå·çš„æ¨¡æ¿åºå·ç±»å‹ */
 #define SLOT_WEAPON			0
 #define SLOT_KNIFE			1
 #define SLOT_GRENADE			2
 
-// Ô­°æµ¶×Ó¹¥»÷¾àÀë
+/* åŸç‰ˆåˆ€å­æ”»å‡»è·ç¦» */
 #define DEFAULT_DISTANCE_SWING		48
 #define DEFAULT_DISTANCE_STAB		32
 
-// »úÃé×´Ì¬
+/* æœºç„çŠ¶æ€ */
 #define CLOSED				0
 #define OPEN				1
 #define ATOB				2
 #define BTOA				3
 
-// ×î´ó½ğÇ®Á¿
+/* æœ€å¤§é‡‘é’±é‡ */
 #define MAXMONEY			16000
 
-// ¹ºÂòÏŞÖÆÉèÖÃ
+/* è´­ä¹°é™åˆ¶è®¾ç½® */
 #define BUY_NORMALLY			0
 #define BUY_CANNOT			1
 #define BUY_EVERYWHERE			2
 
-// BOT¹ºÂòµÄSpecial Weapon
+/* BOTè´­ä¹°çš„Special Weapon */
 #define SW_VESTHELM			1
 #define SW_DEFUSER			2
 #define SW_HEGRENADE			3
 #define SW_FLASHBANG			4
 #define SW_SMOKEGRENADE			5
 
-// ×î´óÖ÷ÎäÆ÷idÊı
+/* æœ€å¤§ä¸»æ­¦å™¨idæ•° */
 #define MAX_PRIM			18
 
-// ×î´ó¸±ÎäÆ÷idÊı
+/* æœ€å¤§å‰¯æ­¦å™¨idæ•° */
 #define MAX_SEC				6
 
-// ÉËº¦Ê±µÄÌØÊâ±ê¼Ç
+/* ä¼¤å®³æ—¶çš„ç‰¹æ®Šæ ‡è®° */
 #define SPDMG_NORMAL			0
 #define SPDMG_CANTHEADSHOT		(1<<0)
 #define SPDMG_TEAMATTACK		(1<<1)
 
-// CheckAttackµÄ·µ»ØÖµ
+/* CheckAttackçš„è¿”å›å€¼ */
 enum
 {
 	HIT_EMPTY = 0,
@@ -61,7 +61,7 @@ enum
 	HIT_WALL
 }
 
-// ÉËº¦ÀàĞÍ
+/* ä¼¤å®³ç±»å‹ */
 enum
 {
 	DMGTYPE_SECTOR = 0,
@@ -111,216 +111,216 @@ enum
 
 enum
 {
-	e_iReloadMode = 0,				// »»µ¯Ä£Ê½£¬Îª1µÄ»°ÊÇM3ÄÇÖÖ»»µ¯Ä£Ê½
-	e_iWeaponSight,					// »úÃéÄ£Ê½£¬Îª1µÄ»°ÊÇ¿ªÆôÓÒ¼ü»úÃé
-	e_iWeaponClip,					// µ¯¼Ğ×Óµ¯
-	e_iWeaponAmmo,					// ºó±¸µ¯
-	e_iWeaponCost,					// ¼Û¸ñ
-	e_iWeaponAmmoCost,				// ×Óµ¯¼Û¸ñ
-	e_iWeaponTeam,					// ¹ºÂò¶ÓÎé£¬1ÊÇT£¬2ÊÇCT£¬0ÊÇËùÓĞ¶ÓÎé
-	e_iWeaponWModelBody,				// WÄ£ĞÍ×ÓÄ£ĞÍµÄĞòºÅ£¨Ã»ÓĞµÄ»°Ğ´0£©
-	MaxWeaponIntData				// ×î´óÊıÁ¿
+	e_iReloadMode = 0,				/* æ¢å¼¹æ¨¡å¼ï¼Œä¸º1çš„è¯æ˜¯M3é‚£ç§æ¢å¼¹æ¨¡å¼ */
+	e_iWeaponSight,					/* æœºç„æ¨¡å¼ï¼Œä¸º1çš„è¯æ˜¯å¼€å¯å³é”®æœºç„ */
+	e_iWeaponClip,					/* å¼¹å¤¹å­å¼¹ */
+	e_iWeaponAmmo,					/* åå¤‡å¼¹ */
+	e_iWeaponCost,					/* ä»·æ ¼ */
+	e_iWeaponAmmoCost,				/* å­å¼¹ä»·æ ¼ */
+	e_iWeaponTeam,					/* è´­ä¹°é˜Ÿä¼ï¼Œ1æ˜¯Tï¼Œ2æ˜¯CTï¼Œ0æ˜¯æ‰€æœ‰é˜Ÿä¼ */
+	e_iWeaponWModelBody,				/* Wæ¨¡å‹å­æ¨¡å‹çš„åºå·ï¼ˆæ²¡æœ‰çš„è¯å†™0ï¼‰ */
+	MaxWeaponIntData				/* æœ€å¤§æ•°é‡ */
 }
 
 enum
 {
-	e_fWeaponDamage = 0,				// ÉËº¦±¶Êı
-	e_fWeaponSpeed,					// ÉäËÙ
-	e_fWeaponAimSpeed,				// ¿ª¾µÉäËÙ
-	e_fWeaponSilencedSpeed,				// ÏûÒôÉäËÙ
-	e_fWeaponRecoil,				// ºó×ù
-	e_fWeaponAimRecoil,				// ¿ª¾µºó×ù
-	e_fWeaponSilencedRecoil,			// ÏûÒôºó×ù
-	e_fWeaponAccuracy,				// ¾«È·¶È
-	e_fWeaponAimAccuracy,				// ¿ª¾µ¾«È·¶È
-	e_fWeaponSilencedAccuracy,			// ÏûÒô¾«È·¶È
-	e_fWeaponReloadTime,				// »»µ¯Ê±¼ä
-	e_fWeaponDrawTime,				// ÌÍ³öÊ±¼ä
-	e_fWeaponMaxSpeed,				// ĞĞ×ßËÙ¶È
-	e_fWeaponAimMaxSpeed,				// ¿ª¾µĞĞ×ßËÙ¶È
-	e_fWeaponKnockBack,				// »÷ÍË
-	e_fSightDistance,				// ¾µÍ·¾àÀë£¬¿ª»úÃéºóµÄ¾µÍ·À­½ü¾àÀë£¬Êı×ÖÔ½Ğ¡£¬À­µÃÔ½½ü
-	e_fSightFrameRate,				// ¾µÍ·±ä»¯·ù¶È£¬Ã¿Ë¢ĞÂÒ»´Î¾µÍ·Ê±À­½üµÄ¾àÀë
-	e_fSightOpenTime,				// ¿ªÆô»úÃéËùĞèÒªµÄÊ±¼ä£¬½¨ÒéºÍÄ£ĞÍ¶¯×÷Ê±¼ä±£³ÖÒ»ÖÂ
-	e_fSightCloseTime,				// ¹Ø±Õ»úÃéËùĞèÒªµÄÊ±¼ä£¬½¨ÒéºÍÄ£ĞÍ¶¯×÷Ê±¼ä±£³ÖÒ»ÖÂ
-	e_fWeaponSilencedTime1,				// ¿ªÆôÏûÒôËùĞèÒªµÄÊ±¼ä£¬½¨ÒéºÍÄ£ĞÍ¶¯×÷Ê±¼ä±£³ÖÒ»ÖÂ
-	e_fWeaponSilencedTime2,				// ¹Ø±ÕÏûÒôËùĞèÒªµÄÊ±¼ä£¬½¨ÒéºÍÄ£ĞÍ¶¯×÷Ê±¼ä±£³ÖÒ»ÖÂ
-	e_fWeaponFireSoundVolume,			// ÎäÆ÷¿ªÇ¹ÉùÒô´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	e_fWeaponSilenceFireSoundVolume,		// ÎäÆ÷ÏûÒô¿ªÇ¹ÉùÒô´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	e_fShotgunStartReloadTime,			// É¢µ¯»»µ¯¿ªÊ¼Ê±¼ä
-	e_fShotgunAfterReloadTime,			// É¢µ¯»»µ¯½áÊøÊ±¼ä
-	MaxWeaponFloatData				// ×î´óÊıÁ¿
+	e_fWeaponDamage = 0,				/* ä¼¤å®³å€æ•° */
+	e_fWeaponSpeed,					/* å°„é€Ÿ */
+	e_fWeaponAimSpeed,				/* å¼€é•œå°„é€Ÿ */
+	e_fWeaponSilencedSpeed,				/* æ¶ˆéŸ³å°„é€Ÿ */
+	e_fWeaponRecoil,				/* ååº§ */
+	e_fWeaponAimRecoil,				/* å¼€é•œååº§ */
+	e_fWeaponSilencedRecoil,			/* æ¶ˆéŸ³ååº§ */
+	e_fWeaponAccuracy,				/* ç²¾ç¡®åº¦ */
+	e_fWeaponAimAccuracy,				/* å¼€é•œç²¾ç¡®åº¦ */
+	e_fWeaponSilencedAccuracy,			/* æ¶ˆéŸ³ç²¾ç¡®åº¦ */
+	e_fWeaponReloadTime,				/* æ¢å¼¹æ—¶é—´ */
+	e_fWeaponDrawTime,				/* æå‡ºæ—¶é—´ */
+	e_fWeaponMaxSpeed,				/* è¡Œèµ°é€Ÿåº¦ */
+	e_fWeaponAimMaxSpeed,				/* å¼€é•œè¡Œèµ°é€Ÿåº¦ */
+	e_fWeaponKnockBack,				/* å‡»é€€ */
+	e_fSightDistance,				/* é•œå¤´è·ç¦»ï¼Œå¼€æœºç„åçš„é•œå¤´æ‹‰è¿‘è·ç¦»ï¼Œæ•°å­—è¶Šå°ï¼Œæ‹‰å¾—è¶Šè¿‘ */
+	e_fSightFrameRate,				/* é•œå¤´å˜åŒ–å¹…åº¦ï¼Œæ¯åˆ·æ–°ä¸€æ¬¡é•œå¤´æ—¶æ‹‰è¿‘çš„è·ç¦» */
+	e_fSightOpenTime,				/* å¼€å¯æœºç„æ‰€éœ€è¦çš„æ—¶é—´ï¼Œå»ºè®®å’Œæ¨¡å‹åŠ¨ä½œæ—¶é—´ä¿æŒä¸€è‡´ */
+	e_fSightCloseTime,				/* å…³é—­æœºç„æ‰€éœ€è¦çš„æ—¶é—´ï¼Œå»ºè®®å’Œæ¨¡å‹åŠ¨ä½œæ—¶é—´ä¿æŒä¸€è‡´ */
+	e_fWeaponSilencedTime1,				/* å¼€å¯æ¶ˆéŸ³æ‰€éœ€è¦çš„æ—¶é—´ï¼Œå»ºè®®å’Œæ¨¡å‹åŠ¨ä½œæ—¶é—´ä¿æŒä¸€è‡´ */
+	e_fWeaponSilencedTime2,				/* å…³é—­æ¶ˆéŸ³æ‰€éœ€è¦çš„æ—¶é—´ï¼Œå»ºè®®å’Œæ¨¡å‹åŠ¨ä½œæ—¶é—´ä¿æŒä¸€è‡´ */
+	e_fWeaponFireSoundVolume,			/* æ­¦å™¨å¼€æªå£°éŸ³å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	e_fWeaponSilenceFireSoundVolume,		/* æ­¦å™¨æ¶ˆéŸ³å¼€æªå£°éŸ³å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	e_fShotgunStartReloadTime,			/* æ•£å¼¹æ¢å¼¹å¼€å§‹æ—¶é—´ */
+	e_fShotgunAfterReloadTime,			/* æ•£å¼¹æ¢å¼¹ç»“æŸæ—¶é—´ */
+	MaxWeaponFloatData				/* æœ€å¤§æ•°é‡ */
 }
 
 enum
 {
-	e_fKnifeSlashResetTime = 0,			// Çá»÷½áÊøÊ±¼ä
-	e_fKnifeSlashTime,				// Çá»÷ÑÓ³ÙÊ±¼ä£¨²»Ğ´ÑÓ³ÙÔòÊÇÖ±½Ó¹¥»÷£©
-	e_fKnifeSlashRange,				// Çá»÷¾àÀë
-	e_fKnifeSlashAngle,				// Çá»÷½Ç¶È
-	e_fKnifeStabResetTime,				// ÖØ»÷½áÊøÊ±¼ä
-	e_fKnifeStabTime,				// ÖØ»÷ÑÓ³ÙÊ±¼ä£¨²»Ğ´ÑÓ³ÙÔòÊÇÖ±½Ó¹¥»÷£©
-	e_fKnifeStabRange,				// ÖØ»÷¾àÀë
-	e_fKnifeStabAngle,				// ÖØ»÷½Ç¶È
-	e_fKnifeDrawTime,				// ÌÍ³öÊ±¼ä
-	e_fKnifeDamage,					// ÉËº¦±¶Êı
-	e_fKnifeDamage2,				// ÖØ»÷ÉËº¦±¶Êı
-	e_fKnifeMaxSpeed,				// ĞĞ×ßËÙ¶È
-	e_fKnifeKnockBack,				// »÷ÍË
-	e_fKnifeSoundVolume1,				// »÷Ç½ÉùÒô´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	e_fKnifeSoundVolume2,				// »÷¿ÕÉùÒô´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	e_fKnifeSoundVolume3,				// ÖØ»÷ÉùÒô´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	e_fKnifeSoundVolume4,				// Çá»÷ÉùÒô1´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	e_fKnifeSoundVolume5,				// Çá»÷ÉùÒô2´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	e_fKnifeSlashAngleOffset,			// Çá»÷½Ç¶ÈÅĞ¶Ï¼ä¸ô£¨½¨ÒéÖµ£º5.0 <= ¼ä¸ô <= Çá»÷½Ç¶È£©
-	e_fKnifeStabAngleOffset,			// ÖØ»÷½Ç¶ÈÅĞ¶Ï¼ä¸ô£¨½¨ÒéÖµ£º5.0 <= ¼ä¸ô <= ÖØ»÷½Ç¶È£©
-	e_fKnifeSlashHeight,				// Çá»÷¸ß¶È£¨½¨ÒéÖµ£º1.0 <= ¸ß¶È <= 50.0£©
-	e_fKnifeStabHeight,				// ÖØ»÷¸ß¶È£¨½¨ÒéÖµ£º1.0 <= ¸ß¶È <= 50.0£©
-	e_fKnifeSlashHeightOffset,			// Çá»÷¸ß¶ÈÅĞ¶Ï¼ä¸ô£¨½¨ÒéÖµ£º5.0 <= ¼ä¸ô <= Çá»÷¸ß¶È£©
-	e_fKnifeStabHeightOffset,			// ÖØ»÷¸ß¶ÈÅĞ¶Ï¼ä¸ô£¨½¨ÒéÖµ£º5.0 <= ¼ä¸ô <= ÖØ»÷¸ß¶È£©
-	MaxKnifeFloatData				// ×î´óÊıÁ¿
+	e_fKnifeSlashResetTime = 0,			/* è½»å‡»ç»“æŸæ—¶é—´ */
+	e_fKnifeSlashTime,				/* è½»å‡»å»¶è¿Ÿæ—¶é—´ï¼ˆä¸å†™å»¶è¿Ÿåˆ™æ˜¯ç›´æ¥æ”»å‡»ï¼‰ */
+	e_fKnifeSlashRange,				/* è½»å‡»è·ç¦» */
+	e_fKnifeSlashAngle,				/* è½»å‡»è§’åº¦ */
+	e_fKnifeStabResetTime,				/* é‡å‡»ç»“æŸæ—¶é—´ */
+	e_fKnifeStabTime,				/* é‡å‡»å»¶è¿Ÿæ—¶é—´ï¼ˆä¸å†™å»¶è¿Ÿåˆ™æ˜¯ç›´æ¥æ”»å‡»ï¼‰ */
+	e_fKnifeStabRange,				/* é‡å‡»è·ç¦» */
+	e_fKnifeStabAngle,				/* é‡å‡»è§’åº¦ */
+	e_fKnifeDrawTime,				/* æå‡ºæ—¶é—´ */
+	e_fKnifeDamage,					/* ä¼¤å®³å€æ•° */
+	e_fKnifeDamage2,				/* é‡å‡»ä¼¤å®³å€æ•° */
+	e_fKnifeMaxSpeed,				/* è¡Œèµ°é€Ÿåº¦ */
+	e_fKnifeKnockBack,				/* å‡»é€€ */
+	e_fKnifeSoundVolume1,				/* å‡»å¢™å£°éŸ³å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	e_fKnifeSoundVolume2,				/* å‡»ç©ºå£°éŸ³å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	e_fKnifeSoundVolume3,				/* é‡å‡»å£°éŸ³å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	e_fKnifeSoundVolume4,				/* è½»å‡»å£°éŸ³1å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	e_fKnifeSoundVolume5,				/* è½»å‡»å£°éŸ³2å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	e_fKnifeSlashAngleOffset,			/* è½»å‡»è§’åº¦åˆ¤æ–­é—´éš”ï¼ˆå»ºè®®å€¼ï¼š5.0 <= é—´éš” <= è½»å‡»è§’åº¦ï¼‰ */
+	e_fKnifeStabAngleOffset,			/* é‡å‡»è§’åº¦åˆ¤æ–­é—´éš”ï¼ˆå»ºè®®å€¼ï¼š5.0 <= é—´éš” <= é‡å‡»è§’åº¦ï¼‰ */
+	e_fKnifeSlashHeight,				/* è½»å‡»é«˜åº¦ï¼ˆå»ºè®®å€¼ï¼š1.0 <= é«˜åº¦ <= 50.0ï¼‰ */
+	e_fKnifeStabHeight,				/* é‡å‡»é«˜åº¦ï¼ˆå»ºè®®å€¼ï¼š1.0 <= é«˜åº¦ <= 50.0ï¼‰ */
+	e_fKnifeSlashHeightOffset,			/* è½»å‡»é«˜åº¦åˆ¤æ–­é—´éš”ï¼ˆå»ºè®®å€¼ï¼š5.0 <= é—´éš” <= è½»å‡»é«˜åº¦ï¼‰ */
+	e_fKnifeStabHeightOffset,			/* é‡å‡»é«˜åº¦åˆ¤æ–­é—´éš”ï¼ˆå»ºè®®å€¼ï¼š5.0 <= é—´éš” <= é‡å‡»é«˜åº¦ï¼‰ */
+	MaxKnifeFloatData				/* æœ€å¤§æ•°é‡ */
 }
 
 enum
 {
-	wpn_iWeaponId = 0,			// ÀàĞÍ£ºint		½éÉÜ£ºÎäÆ÷ID£¨CSW_***£©
-	wpn_szWeaponList,			// ÀàĞÍ£ºstring		½éÉÜ£ºÎäÆ÷SPR£¨weapon_***.txt£©
-	wpn_szKillSpr,				// ÀàĞÍ£ºstring		½éÉÜ£ºÉ±µĞSPR
+	wpn_iWeaponId = 0,			/* ç±»å‹ï¼šint		ä»‹ç»ï¼šæ­¦å™¨IDï¼ˆCSW_***ï¼‰ */
+	wpn_szWeaponList,			/* ç±»å‹ï¼šstring		ä»‹ç»ï¼šæ­¦å™¨SPRï¼ˆweapon_***.txtï¼‰ */
+	wpn_szKillSpr,				/* ç±»å‹ï¼šstring		ä»‹ç»ï¼šæ€æ•ŒSPR */
 	// ---------------------------------------------------------------------------------------
-	// ÒÔÏÂ¼¸¸öĞŞ¸ÄÊ±×¢Òâ»º´æ
+	// ä»¥ä¸‹å‡ ä¸ªä¿®æ”¹æ—¶æ³¨æ„ç¼“å­˜
 	// ---------------------------------------------------------------------------------------
-	wpn_iExplodeSprId,			// ÀàĞÍ£ºint	½éÉÜ£º±¬Õ¨SPRµÄid
-	wpn_szPModel,				// ÀàĞÍ£ºstring	½éÉÜ£ºPÄ£ĞÍ
-	wpn_szVModel,				// ÀàĞÍ£ºstring	½éÉÜ£ºVÄ£ĞÍ
-	wpn_szWModel,				// ÀàĞÍ£ºstring	½éÉÜ£ºWÄ£ĞÍ
-	wpn_szSightModel,			// ÀàĞÍ£ºstring	½éÉÜ£º»úÃéÄ£ĞÍ
-	wpn_szSound1,				// ÀàĞÍ£ºstring	½éÉÜ£º¿ªÇ¹ÉùÒô1¡¢±¬Õ¨ÉùÒô¡¢µ¶×ÓÌÍ³öÉùÒô
-	wpn_szSound2,				// ÀàĞÍ£ºstring	½éÉÜ£º¿ªÇ¹ÉùÒô2¡¢µ¶×Ó»÷Ç½ÉùÒô
-	wpn_szSound3,				// ÀàĞÍ£ºstring	½éÉÜ£ºµ¶×Ó»÷¿ÕÉùÒô
-	wpn_szSound4,				// ÀàĞÍ£ºstring	½éÉÜ£ºµ¶×ÓÖØ»÷ÉùÒô
-	wpn_szSound5,				// ÀàĞÍ£ºstring	½éÉÜ£ºµ¶×ÓÇá»÷1ÉùÒô
-	wpn_szSound6,				// ÀàĞÍ£ºstring	½éÉÜ£ºµ¶×ÓÇá»÷2ÉùÒô
+	wpn_iExplodeSprId,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šçˆ†ç‚¸SPRçš„id */
+	wpn_szPModel,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šPæ¨¡å‹ */
+	wpn_szVModel,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šVæ¨¡å‹ */
+	wpn_szWModel,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šWæ¨¡å‹ */
+	wpn_szSightModel,			/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šæœºç„æ¨¡å‹ */
+	wpn_szSound1,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šå¼€æªå£°éŸ³1ã€çˆ†ç‚¸å£°éŸ³ã€åˆ€å­æå‡ºå£°éŸ³ */
+	wpn_szSound2,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šå¼€æªå£°éŸ³2ã€åˆ€å­å‡»å¢™å£°éŸ³ */
+	wpn_szSound3,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šåˆ€å­å‡»ç©ºå£°éŸ³ */
+	wpn_szSound4,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šåˆ€å­é‡å‡»å£°éŸ³ */
+	wpn_szSound5,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šåˆ€å­è½»å‡»1å£°éŸ³ */
+	wpn_szSound6,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šåˆ€å­è½»å‡»2å£°éŸ³ */
 	// ---------------------------------------------------------------------------------------
-	wpn_iReloadMode,			// ÀàĞÍ£ºint	½éÉÜ£º»»µ¯Ä£Ê½
-	wpn_iSightMode,				// ÀàĞÍ£ºint	½éÉÜ£º¿ªÆô»úÃé
-	wpn_iClip,				// ÀàĞÍ£ºint	½éÉÜ£ºµ¯¼Ğ×Óµ¯
-	wpn_iBPAmmo,				// ÀàĞÍ£ºint	½éÉÜ£º±¸ÓÃ×Óµ¯
-	wpn_fDamage,				// ÀàĞÍ£ºfloat	½éÉÜ£ºÉËº¦±¶Êı
-	wpn_fStabDamage,			// ÀàĞÍ£ºfloat	½éÉÜ£ºµ¶×ÓÖØ»÷ÉËº¦±¶Êı
-	wpn_fFireSpeed,				// ÀàĞÍ£ºfloat	½éÉÜ£ºÉäËÙ
-	wpn_fAimFireSpeed,			// ÀàĞÍ£ºfloat	½éÉÜ£º¿ª¾µÉäËÙ
-	wpn_fSilencedFireSpeed,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÏûÒôÉäËÙ
-	wpn_fRecoil,				// ÀàĞÍ£ºfloat	½éÉÜ£ººó×ù
-	wpn_fAimRecoil,				// ÀàĞÍ£ºfloat	½éÉÜ£º¿ª¾µºó×ù
-	wpn_fSilencedRecoil,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÏûÒôºó×ù
-	wpn_fAccuracy,				// ÀàĞÍ£ºfloat	½éÉÜ£º¾«È·¶È
-	wpn_fAimAccuracy,			// ÀàĞÍ£ºfloat	½éÉÜ£º¿ª¾µ¾«È·¶È
-	wpn_fSilencedAccuracy,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÏûÒô¾«È·¶È
-	wpn_fSightDistance,			// ÀàĞÍ£ºfloat	½éÉÜ£º¾µÍ·¾àÀë
-	wpn_fSightFramerate,			// ÀàĞÍ£ºfloat	½éÉÜ£º¾µÍ·±ä»¯·ù¶È
-	wpn_fSightOpenTime,			// ÀàĞÍ£ºfloat	½éÉÜ£º¿ªÆôËÙ¶È
-	wpn_fSightCloseTime,			// ÀàĞÍ£ºfloat	½éÉÜ£º¹Ø±ÕËÙ¶È
-	wpn_fReloadTime,			// ÀàĞÍ£ºfloat	½éÉÜ£º»»µ¯Ê±¼ä
-	wpn_fDrawTime,				// ÀàĞÍ£ºfloat	½éÉÜ£ºÌÍ³öÊ±¼ä
-	wpn_fDetachSilencerTime,		// ÀàĞÍ£ºfloat	½éÉÜ£º²ğ³ıÏûÉùÆ÷Ê±¼ä
-	wpn_fAttachSilencerTime,		// ÀàĞÍ£ºfloat	½éÉÜ£º°²×°ÏûÉùÆ÷Ê±¼ä
-	wpn_fSlashResetTime,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÇá»÷½áÊøÊ±¼ä
-	wpn_fSlashTime,				// ÀàĞÍ£ºfloat	½éÉÜ£ºÇá»÷ÑÓ³ÙÊ±¼ä
-	wpn_fSlashRange,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÇá»÷¾àÀë
-	wpn_fSlashAngle,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÇá»÷½Ç¶È
-	wpn_fStabResetTime,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÖØ»÷½áÊøÊ±¼ä
-	wpn_fStabTime,				// ÀàĞÍ£ºfloat	½éÉÜ£ºÖØ»÷ÑÓ³ÙÊ±¼ä
-	wpn_fStabRange,				// ÀàĞÍ£ºfloat	½éÉÜ£ºÖØ»÷¾àÀë
-	wpn_fStabAngle,				// ÀàĞÍ£ºfloat	½éÉÜ£ºÖØ»÷½Ç¶È
-	wpn_fExpTime,				// ÀàĞÍ£ºfloat	½éÉÜ£º±¬Õ¨Ê±¼ä
-	wpn_fExpRange,				// ÀàĞÍ£ºfloat	½éÉÜ£º±¬Õ¨·¶Î§
-	wpn_fMaxSpeed,				// ÀàĞÍ£ºfloat	½éÉÜ£ºÎäÆ÷×î´óËÙ¶È
-	wpn_fAimMaxSpeed,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÎäÆ÷¿ª¾µ×î´óËÙ¶È
-	wpn_fKnockBack,				// ÀàĞÍ£ºfloat	½éÉÜ£ºÎäÆ÷»÷ÍË
-	wpn_szCommand,				// ÀàĞÍ£ºstring	½éÉÜ£º¹ºÂòÃüÁî
-	wpn_iCost,				// ÀàĞÍ£ºint	½éÉÜ£º¼Û¸ñ
-	wpn_iAmmoCost,				// ÀàĞÍ£ºint	½éÉÜ£º×Óµ¯¼Û¸ñ
-	wpn_iTeam,				// ÀàĞÍ£ºint	½éÉÜ£º¹ºÂò¶ÓÎé
-	wpn_iWModelBody,			// ÀàĞÍ£ºint	½éÉÜ£ºWÄ£ĞÍµÄ×ÓÄ£ĞÍĞòºÅ
-	wpn_iAnimIdle,				// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷¾²Ö¹¶¯×÷
-	wpn_iAnimReload,			// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷»»µ¯¶¯×÷
-	wpn_iAnimDraw,				// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷ÌÍ³ö¶¯×÷
-	wpn_iAnimShoot1,			// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷Éä»÷1¶¯×÷
-	wpn_iAnimShoot2,			// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷Éä»÷2¶¯×÷
-	wpn_iAnimShoot3,			// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷Éä»÷3¶¯×÷
-	wpn_iAnimStartReload,			// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷¿ªÊ¼»»µ¯¶¯×÷
-	wpn_iAnimInsert,			// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷²åÈë×Óµ¯¶¯×÷
-	wpn_iAnimAfterReload,			// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷½áÊø»»µ¯¶¯×÷
-	wpn_iAnimSightOpen,			// ÀàĞÍ£ºint	½éÉÜ£º¿ªÆô»úÃé¶¯×÷
-	wpn_iAnimSightClose,			// ÀàĞÍ£ºint	½éÉÜ£º¹Ø±Õ»úÃé¶¯×÷
-	wpn_iAnimSilencedIdle,			// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷ÏûÒô¾²Ö¹¶¯×÷
-	wpn_iAnimSilencedReload,		// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷ÏûÒô»»µ¯¶¯×÷
-	wpn_iAnimSilencedDraw,			// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷ÏûÒôÌÍ³ö¶¯×÷
-	wpn_iAnimSilencedShoot1,		// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷ÏûÒôÉä»÷1¶¯×÷
-	wpn_iAnimSilencedShoot2,		// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷ÏûÒôÉä»÷2¶¯×÷
-	wpn_iAnimSilencedShoot3,		// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷ÏûÒôÉä»÷3¶¯×÷
-	wpn_iAnimDetachSilencer,		// ÀàĞÍ£ºint	½éÉÜ£º²ğ³ıÏûÉùÆ÷¶¯×÷
-	wpn_iAnimAttachSilencer,		// ÀàĞÍ£ºint	½éÉÜ£º°²×°ÏûÉùÆ÷¶¯×÷
-	wpn_iKnifeAnimIdle,			// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×Ó¾²Ö¹¶¯×÷
-	wpn_iKnifeAnimSlash1,			// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×ÓÇá»÷1¶¯×÷
-	wpn_iKnifeAnimSlash2,			// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×ÓÇá»÷2¶¯×÷
-	wpn_iKnifeAnimDraw,			// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×ÓÌÍ³ö¶¯×÷
-	wpn_iKnifeAnimStab,			// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×ÓÖØ»÷¶¯×÷
-	wpn_iKnifeAnimStabMiss,			// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×ÓÖØ»÷miss¶¯×÷
-	wpn_iKnifeAnimMidslash,			// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×ÓÇá»÷¶¯×÷
-	wpn_iKnifeAnimMidslashMiss,		// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×ÓÇá»÷miss¶¯×÷
-	wpn_iKnifeAnimSlashBegin,		// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×ÓÇá»÷ÑÓ³Ù¶¯×÷
-	wpn_iKnifeAnimStabBegin,		// ÀàĞÍ£ºint	½éÉÜ£ºµ¶×ÓÖØ»÷ÑÓ³Ù¶¯×÷
+	wpn_iReloadMode,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ¢å¼¹æ¨¡å¼ */
+	wpn_iSightMode,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå¼€å¯æœºç„ */
+	wpn_iClip,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå¼¹å¤¹å­å¼¹ */
+	wpn_iBPAmmo,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå¤‡ç”¨å­å¼¹ */
+	wpn_fDamage,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šä¼¤å®³å€æ•° */
+	wpn_fStabDamage,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šåˆ€å­é‡å‡»ä¼¤å®³å€æ•° */
+	wpn_fFireSpeed,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå°„é€Ÿ */
+	wpn_fAimFireSpeed,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå¼€é•œå°„é€Ÿ */
+	wpn_fSilencedFireSpeed,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ¶ˆéŸ³å°„é€Ÿ */
+	wpn_fRecoil,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šååº§ */
+	wpn_fAimRecoil,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå¼€é•œååº§ */
+	wpn_fSilencedRecoil,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ¶ˆéŸ³ååº§ */
+	wpn_fAccuracy,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šç²¾ç¡®åº¦ */
+	wpn_fAimAccuracy,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå¼€é•œç²¾ç¡®åº¦ */
+	wpn_fSilencedAccuracy,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ¶ˆéŸ³ç²¾ç¡®åº¦ */
+	wpn_fSightDistance,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé•œå¤´è·ç¦» */
+	wpn_fSightFramerate,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé•œå¤´å˜åŒ–å¹…åº¦ */
+	wpn_fSightOpenTime,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå¼€å¯é€Ÿåº¦ */
+	wpn_fSightCloseTime,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå…³é—­é€Ÿåº¦ */
+	wpn_fReloadTime,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ¢å¼¹æ—¶é—´ */
+	wpn_fDrawTime,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæå‡ºæ—¶é—´ */
+	wpn_fDetachSilencerTime,		/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ‹†é™¤æ¶ˆå£°å™¨æ—¶é—´ */
+	wpn_fAttachSilencerTime,		/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå®‰è£…æ¶ˆå£°å™¨æ—¶é—´ */
+	wpn_fSlashResetTime,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šè½»å‡»ç»“æŸæ—¶é—´ */
+	wpn_fSlashTime,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šè½»å‡»å»¶è¿Ÿæ—¶é—´ */
+	wpn_fSlashRange,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šè½»å‡»è·ç¦» */
+	wpn_fSlashAngle,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šè½»å‡»è§’åº¦ */
+	wpn_fStabResetTime,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé‡å‡»ç»“æŸæ—¶é—´ */
+	wpn_fStabTime,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé‡å‡»å»¶è¿Ÿæ—¶é—´ */
+	wpn_fStabRange,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé‡å‡»è·ç¦» */
+	wpn_fStabAngle,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé‡å‡»è§’åº¦ */
+	wpn_fExpTime,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šçˆ†ç‚¸æ—¶é—´ */
+	wpn_fExpRange,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šçˆ†ç‚¸èŒƒå›´ */
+	wpn_fMaxSpeed,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ­¦å™¨æœ€å¤§é€Ÿåº¦ */
+	wpn_fAimMaxSpeed,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ­¦å™¨å¼€é•œæœ€å¤§é€Ÿåº¦ */
+	wpn_fKnockBack,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ­¦å™¨å‡»é€€ */
+	wpn_szCommand,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šè´­ä¹°å‘½ä»¤ */
+	wpn_iCost,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šä»·æ ¼ */
+	wpn_iAmmoCost,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå­å¼¹ä»·æ ¼ */
+	wpn_iTeam,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šè´­ä¹°é˜Ÿä¼ */
+	wpn_iWModelBody,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šWæ¨¡å‹çš„å­æ¨¡å‹åºå· */
+	wpn_iAnimIdle,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨é™æ­¢åŠ¨ä½œ */
+	wpn_iAnimReload,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æ¢å¼¹åŠ¨ä½œ */
+	wpn_iAnimDraw,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æå‡ºåŠ¨ä½œ */
+	wpn_iAnimShoot1,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨å°„å‡»1åŠ¨ä½œ */
+	wpn_iAnimShoot2,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨å°„å‡»2åŠ¨ä½œ */
+	wpn_iAnimShoot3,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨å°„å‡»3åŠ¨ä½œ */
+	wpn_iAnimStartReload,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨å¼€å§‹æ¢å¼¹åŠ¨ä½œ */
+	wpn_iAnimInsert,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æ’å…¥å­å¼¹åŠ¨ä½œ */
+	wpn_iAnimAfterReload,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨ç»“æŸæ¢å¼¹åŠ¨ä½œ */
+	wpn_iAnimSightOpen,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå¼€å¯æœºç„åŠ¨ä½œ */
+	wpn_iAnimSightClose,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå…³é—­æœºç„åŠ¨ä½œ */
+	wpn_iAnimSilencedIdle,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æ¶ˆéŸ³é™æ­¢åŠ¨ä½œ */
+	wpn_iAnimSilencedReload,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æ¶ˆéŸ³æ¢å¼¹åŠ¨ä½œ */
+	wpn_iAnimSilencedDraw,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æ¶ˆéŸ³æå‡ºåŠ¨ä½œ */
+	wpn_iAnimSilencedShoot1,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æ¶ˆéŸ³å°„å‡»1åŠ¨ä½œ */
+	wpn_iAnimSilencedShoot2,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æ¶ˆéŸ³å°„å‡»2åŠ¨ä½œ */
+	wpn_iAnimSilencedShoot3,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æ¶ˆéŸ³å°„å‡»3åŠ¨ä½œ */
+	wpn_iAnimDetachSilencer,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ‹†é™¤æ¶ˆå£°å™¨åŠ¨ä½œ */
+	wpn_iAnimAttachSilencer,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå®‰è£…æ¶ˆå£°å™¨åŠ¨ä½œ */
+	wpn_iKnifeAnimIdle,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­é™æ­¢åŠ¨ä½œ */
+	wpn_iKnifeAnimSlash1,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­è½»å‡»1åŠ¨ä½œ */
+	wpn_iKnifeAnimSlash2,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­è½»å‡»2åŠ¨ä½œ */
+	wpn_iKnifeAnimDraw,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­æå‡ºåŠ¨ä½œ */
+	wpn_iKnifeAnimStab,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­é‡å‡»åŠ¨ä½œ */
+	wpn_iKnifeAnimStabMiss,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­é‡å‡»missåŠ¨ä½œ */
+	wpn_iKnifeAnimMidslash,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­è½»å‡»åŠ¨ä½œ */
+	wpn_iKnifeAnimMidslashMiss,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­è½»å‡»missåŠ¨ä½œ */
+	wpn_iKnifeAnimSlashBegin,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­è½»å‡»å»¶è¿ŸåŠ¨ä½œ */
+	wpn_iKnifeAnimStabBegin,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåˆ€å­é‡å‡»å»¶è¿ŸåŠ¨ä½œ */
 	// ---------------------------------------------------------------------------------------
-	// ÏÂÃæÕâĞ©ÎÒ²»ÖªµÀÄÜ²»ÄÜÓÃÉÏ¡£¡£µ«ÊÇ»¹ÊÇÅªÁË¼¸¸ö
+	// ä¸‹é¢è¿™äº›æˆ‘ä¸çŸ¥é“èƒ½ä¸èƒ½ç”¨ä¸Šã€‚ã€‚ä½†æ˜¯è¿˜æ˜¯å¼„äº†å‡ ä¸ª
 	// ---------------------------------------------------------------------------------------
-	wpn_iUser1,				// ÀàĞÍ£ºint	½éÉÜ£º´¢´æÕûĞÍÊı¾İ
-	wpn_iUser2,				// ÀàĞÍ£ºint	½éÉÜ£º´¢´æÕûĞÍÊı¾İ
-	wpn_iUser3,				// ÀàĞÍ£ºint	½éÉÜ£º´¢´æÕûĞÍÊı¾İ
-	wpn_iUser4,				// ÀàĞÍ£ºint	½éÉÜ£º´¢´æÕûĞÍÊı¾İ
-	wpn_fUser1,				// ÀàĞÍ£ºfloat	½éÉÜ£º´¢´æ¸¡µãĞÍÊı¾İ
-	wpn_fUser2,				// ÀàĞÍ£ºfloat	½éÉÜ£º´¢´æ¸¡µãĞÍÊı¾İ
-	wpn_fUser3,				// ÀàĞÍ£ºfloat	½éÉÜ£º´¢´æ¸¡µãĞÍÊı¾İ
-	wpn_fUser4,				// ÀàĞÍ£ºfloat	½éÉÜ£º´¢´æ¸¡µãĞÍÊı¾İ
-	wpn_szUser1,				// ÀàĞÍ£ºstring	½éÉÜ£º´¢´æ×Ö·û´®Êı¾İ
-	wpn_szUser2,				// ÀàĞÍ£ºstring	½éÉÜ£º´¢´æ×Ö·û´®Êı¾İ
-	wpn_szUser3,				// ÀàĞÍ£ºstring	½éÉÜ£º´¢´æ×Ö·û´®Êı¾İ
-	wpn_szUser4,				// ÀàĞÍ£ºstring	½éÉÜ£º´¢´æ×Ö·û´®Êı¾İ
+	wpn_iUser1,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå‚¨å­˜æ•´å‹æ•°æ® */
+	wpn_iUser2,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå‚¨å­˜æ•´å‹æ•°æ® */
+	wpn_iUser3,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå‚¨å­˜æ•´å‹æ•°æ® */
+	wpn_iUser4,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå‚¨å­˜æ•´å‹æ•°æ® */
+	wpn_fUser1,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå‚¨å­˜æµ®ç‚¹å‹æ•°æ® */
+	wpn_fUser2,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå‚¨å­˜æµ®ç‚¹å‹æ•°æ® */
+	wpn_fUser3,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå‚¨å­˜æµ®ç‚¹å‹æ•°æ® */
+	wpn_fUser4,				/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå‚¨å­˜æµ®ç‚¹å‹æ•°æ® */
+	wpn_szUser1,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šå‚¨å­˜å­—ç¬¦ä¸²æ•°æ® */
+	wpn_szUser2,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šå‚¨å­˜å­—ç¬¦ä¸²æ•°æ® */
+	wpn_szUser3,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šå‚¨å­˜å­—ç¬¦ä¸²æ•°æ® */
+	wpn_szUser4,				/* ç±»å‹ï¼šstring	ä»‹ç»ï¼šå‚¨å­˜å­—ç¬¦ä¸²æ•°æ® */
 	// ---------------------------------------------------------------------------------------
-	wpn_iAmount,				// ÀàĞÍ£ºint	½éÉÜ£ºµ±Ç°×¢²áµÄÎäÆ÷ÊıÁ¿£¨¸Ã²ÎÊı²»¿É¸ü¸Ä Íæ¼ÒidºÍÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£©
-	wpn_ID,					// ÀàĞÍ£ºint	½éÉÜ£º»ñÈ¡µ±Ç°ÎäÆ÷µÄĞòºÅ£¨¸Ã²ÎÊı²»¿É¸ü¸Ä Íæ¼ÒidÌîÊµÌåid£¬Èç¹ûÊÇÄ£°å×¢²áÔòÎäÆ÷ĞòºÅÌîÄ£°åĞòºÅ£¬Íæ¼ÒidÌîÎäÆ÷slot£ºSLOT_WEAPON¡¢SLOT_KNIFE¡¢SLOT_GRENADE£©
-	wpn_iBloodColor,			// ÀàĞÍ£ºint	½éÉÜ£ºÑªÒºÑÕÉ«£¨Íæ¼ÒidºÍÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£©
-	wpn_AllTeamBuy,				// ÀàĞÍ£ºint	½éÉÜ£ºÎäÆ÷ËùÓĞ¶ÓÎé¹ºÂò£¨Íæ¼ÒidºÍÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£©
-	wpn_SetBuy,				// ÀàĞÍ£ºint	½éÉÜ£º¹ºÂòÏŞÖÆÉèÖÃ£¨ÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£¬Ò»¹²ÈıÖÖ£ºBUY_NORMALLY¡¢BUY_CANNOT¡¢BUY_EVERYWHERE£¬·Ö±ğÊÇÕı³£¹ºÂò£¬²»ÄÜ¹ºÂò£¬ÈÎºÎµØÇø¹ºÂò£©
-	wpn_iUserSight,				// ÀàĞÍ£ºint	½éÉÜ£º»ñÈ¡Íæ¼ÒµÄ»úÃé×´Ì¬£¨¸Ã²ÎÊı²»¿ÉĞŞ¸Ä£¬ÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£©
-	wpn_iBotMoney,				// ÀàĞÍ£ºint	½éÉÜ£º»ñÈ¡»òĞŞ¸ÄBOTµÄ½ğÇ®£¨ÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£©
+	wpn_iAmount,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šå½“å‰æ³¨å†Œçš„æ­¦å™¨æ•°é‡ï¼ˆè¯¥å‚æ•°ä¸å¯æ›´æ”¹ ç©å®¶idå’Œæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼‰ */
+	wpn_ID,					/* ç±»å‹ï¼šint	ä»‹ç»ï¼šè·å–å½“å‰æ­¦å™¨çš„åºå·ï¼ˆè¯¥å‚æ•°ä¸å¯æ›´æ”¹ ç©å®¶idå¡«å®ä½“idï¼Œå¦‚æœæ˜¯æ¨¡æ¿æ³¨å†Œåˆ™æ­¦å™¨åºå·å¡«æ¨¡æ¿åºå·ï¼Œç©å®¶idå¡«æ­¦å™¨slotï¼šSLOT_WEAPONã€SLOT_KNIFEã€SLOT_GRENADEï¼‰ */
+	wpn_iBloodColor,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šè¡€æ¶²é¢œè‰²ï¼ˆç©å®¶idå’Œæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼‰ */
+	wpn_AllTeamBuy,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ­¦å™¨æ‰€æœ‰é˜Ÿä¼è´­ä¹°ï¼ˆç©å®¶idå’Œæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼‰ */
+	wpn_SetBuy,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šè´­ä¹°é™åˆ¶è®¾ç½®ï¼ˆæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼Œä¸€å…±ä¸‰ç§ï¼šBUY_NORMALLYã€BUY_CANNOTã€BUY_EVERYWHEREï¼Œåˆ†åˆ«æ˜¯æ­£å¸¸è´­ä¹°ï¼Œä¸èƒ½è´­ä¹°ï¼Œä»»ä½•åœ°åŒºè´­ä¹°ï¼‰ */
+	wpn_iUserSight,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šè·å–ç©å®¶çš„æœºç„çŠ¶æ€ï¼ˆè¯¥å‚æ•°ä¸å¯ä¿®æ”¹ï¼Œæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼‰ */
+	wpn_iBotMoney,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šè·å–æˆ–ä¿®æ”¹BOTçš„é‡‘é’±ï¼ˆæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼‰ */
 	// ---------------------------------------------------------------------------------------
-	// CSSTE¶îÍâÌí¼ÓµÄ
+	// CSSTEé¢å¤–æ·»åŠ çš„
 	// ---------------------------------------------------------------------------------------
-	wpn_iGameWeaponBPAmmo,			// ÀàĞÍ£ºint	½éÉÜ£ºÔ­°æÎäÆ÷µÄ×î´óºó±¸µ¯Ò©Á¿£¨ÎäÆ÷ĞòºÅÌîÎäÆ÷ÀàĞÍCSW_*£©
-	wpn_fDamagePoint,			// ÀàĞÍ£ºfloat	½éÉÜ£º¹¥»÷ÕßµÄÉËº¦±¶Êı£¨ÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£©
-	wpn_fKnockBackPoint,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÊÜº¦ÕßµÄ»÷ÍË±¶Êı£¨ÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£©
-	wpn_iCurWeaponBPAmmo,			// ÀàĞÍ£ºint	½éÉÜ£ºÌí¼ÓµÄÎäÆ÷µÄµ±Ç°ºó±³µ¯Ò©Á¿
-	wpn_iGameCurWeaponBPAmmo,		// ÀàĞÍ£ºint	½éÉÜ£ºÔ­°æÎäÆ÷µÄµ±Ç°ºó±³µ¯Ò©Á¿£¨ÎäÆ÷ĞòºÅÌîÎäÆ÷ÀàĞÍCSW_*£©
-	wpn_iUserMoney,				// ÀàĞÍ£ºint	½éÉÜ£ºÍæ¼Òµ±Ç°µÄ½ğÇ®£¨»ñÈ¡Ê±£ºÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£»ÉèÖÃÊ±£ºÎäÆ÷ĞòºÅ²ÎÊıÎª1ÔòÏÔÊ¾Ìí¼ÓÁË¶àÉÙÇ®£¬Îª0Ê±Ôò²»ÏÔÊ¾Ìí¼ÓÁË¶àÉÙÇ®£©
-	wpn_iMaxMoney,				// ÀàĞÍ£ºint	½éÉÜ£º×î´ó½ğÇ®Êı£¨Íæ¼ÒidºÍÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£©
-	wpn_fDamageVictimPoint,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÊÜº¦ÕßµÄÉËº¦±¶Êı£¨ÎäÆ÷ĞòºÅ²ÎÊı±»ºöÂÔ£©
-	wpn_iAttackEntity,			// ÀàĞÍ£ºint	½éÉÜ£ºÉËº¦µÄÊµÌåid£¨²»½¨ÒéÊ¹ÓÃ£¡ÂÒÓÃ»á³öÏÖbug£©
-	wpn_iHitGroup,				// ÀàĞÍ£ºint	½éÉÜ£º¹¥»÷ÕßÉËº¦µ½µÄÎ»ÖÃ£¨½öÏŞÓÚWPN_ExecuteAttack½øĞĞÉËº¦Ê±£¬¸Ã²ÎÊıÖ»ÄÜ±»ĞŞ¸Ä£¬ÎŞ·¨±»»ñÈ¡£©
+	wpn_iGameWeaponBPAmmo,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåŸç‰ˆæ­¦å™¨çš„æœ€å¤§åå¤‡å¼¹è¯é‡ï¼ˆæ­¦å™¨åºå·å¡«æ­¦å™¨ç±»å‹CSW_*ï¼‰ */
+	wpn_fDamagePoint,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ”»å‡»è€…çš„ä¼¤å®³å€æ•°ï¼ˆæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼‰ */
+	wpn_fKnockBackPoint,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå—å®³è€…çš„å‡»é€€å€æ•°ï¼ˆæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼‰ */
+	wpn_iCurWeaponBPAmmo,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ·»åŠ çš„æ­¦å™¨çš„å½“å‰åèƒŒå¼¹è¯é‡ */
+	wpn_iGameCurWeaponBPAmmo,		/* ç±»å‹ï¼šint	ä»‹ç»ï¼šåŸç‰ˆæ­¦å™¨çš„å½“å‰åèƒŒå¼¹è¯é‡ï¼ˆæ­¦å™¨åºå·å¡«æ­¦å™¨ç±»å‹CSW_*ï¼‰ */
+	wpn_iUserMoney,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šç©å®¶å½“å‰çš„é‡‘é’±ï¼ˆè·å–æ—¶ï¼šæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼›è®¾ç½®æ—¶ï¼šæ­¦å™¨åºå·å‚æ•°ä¸º1åˆ™æ˜¾ç¤ºæ·»åŠ äº†å¤šå°‘é’±ï¼Œä¸º0æ—¶åˆ™ä¸æ˜¾ç¤ºæ·»åŠ äº†å¤šå°‘é’±ï¼‰ */
+	wpn_iMaxMoney,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæœ€å¤§é‡‘é’±æ•°ï¼ˆç©å®¶idå’Œæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼‰ */
+	wpn_fDamageVictimPoint,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå—å®³è€…çš„ä¼¤å®³å€æ•°ï¼ˆæ­¦å™¨åºå·å‚æ•°è¢«å¿½ç•¥ï¼‰ */
+	wpn_iAttackEntity,			/* ç±»å‹ï¼šint	ä»‹ç»ï¼šä¼¤å®³çš„å®ä½“idï¼ˆä¸å»ºè®®ä½¿ç”¨ï¼ä¹±ç”¨ä¼šå‡ºç°bugï¼‰ */
+	wpn_iHitGroup,				/* ç±»å‹ï¼šint	ä»‹ç»ï¼šæ”»å‡»è€…ä¼¤å®³åˆ°çš„ä½ç½®ï¼ˆä»…é™äºWPN_ExecuteAttackè¿›è¡Œä¼¤å®³æ—¶ï¼Œè¯¥å‚æ•°åªèƒ½è¢«ä¿®æ”¹ï¼Œæ— æ³•è¢«è·å–ï¼‰ */
 	// ---------------------------------------------------------------------------------------
-	wpn_fFireSoundVolume,			// ÀàĞÍ£ºfloat	½éÉÜ£º¿ªÇ¹µÄÉùÒô´óĞ¡£¬ÊÖÀ×±¬Õ¨µÄÉùÒô´óĞ¡£¨È¡Öµ£º0.0 <= ÊıÖµ <= 1.0£©
-	wpn_fSilenceFireSoundVolume,		// ÀàĞÍ£ºfloat	½éÉÜ£ºÎäÆ÷ÏûÒô×´Ì¬ÏÂ¿ªÇ¹ÉùÒô´óĞ¡£¨È¡Öµ£º0.0 <= ÊıÖµ <= 1.0£©
-	wpn_fKnifeSoundVolume1,			// ÀàĞÍ£ºfloat	½éÉÜ£º»÷Ç½ÉùÒô´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	wpn_fKnifeSoundVolume2,			// ÀàĞÍ£ºfloat	½éÉÜ£º»÷¿ÕÉùÒô´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	wpn_fKnifeSoundVolume3,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÖØ»÷ÉùÒô´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	wpn_fKnifeSoundVolume4,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÇá»÷ÉùÒô1´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	wpn_fKnifeSoundVolume5,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÇá»÷ÉùÒô2´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-	wpn_fShotgunStartReloadTime,		// ÀàĞÍ£ºfloat	½éÉÜ£ºÉ¢µ¯¿ªÊ¼»»µ¯µÄÊ±¼ä
-	wpn_fShotgunAfterReloadTime,		// ÀàĞÍ£ºfloat	½éÉÜ£ºÉ¢µ¯½áÊø»»µ¯µÄÊ±¼ä
-	wpn_fKnifeSlashAngleOffset,		// ÀàĞÍ£ºfloat	½éÉÜ£ºÇá»÷½Ç¶ÈÅĞ¶Ï¼ä¸ô£¨½¨ÒéÖµ£º5.0 <= ¼ä¸ô <= Çá»÷½Ç¶È£©
-	wpn_fKnifeStabAngleOffset,		// ÀàĞÍ£ºfloat	½éÉÜ£ºÖØ»÷½Ç¶ÈÅĞ¶Ï¼ä¸ô£¨½¨ÒéÖµ£º5.0 <= ¼ä¸ô <= ÖØ»÷½Ç¶È£©
-	wpn_fKnifeSlashHeight,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÇá»÷¸ß¶È£¨½¨ÒéÖµ£º1.0 <= ¸ß¶È <= 50.0£©
-	wpn_fKnifeStabHeight,			// ÀàĞÍ£ºfloat	½éÉÜ£ºÖØ»÷¸ß¶È£¨½¨ÒéÖµ£º1.0 <= ¸ß¶È <= 50.0£©
-	wpn_fKnifeSlashHeightOffset,		// ÀàĞÍ£ºfloat	½éÉÜ£ºÇá»÷¸ß¶ÈÅĞ¶Ï¼ä¸ô£¨½¨ÒéÖµ£º5.0 <= ¼ä¸ô <= Çá»÷¸ß¶È£©
-	wpn_fKnifeStabHeightOffset,		// ÀàĞÍ£ºfloat	½éÉÜ£ºÖØ»÷¸ß¶ÈÅĞ¶Ï¼ä¸ô£¨½¨ÒéÖµ£º5.0 <= ¼ä¸ô <= ÖØ»÷¸ß¶È£©
+	wpn_fFireSoundVolume,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå¼€æªçš„å£°éŸ³å¤§å°ï¼Œæ‰‹é›·çˆ†ç‚¸çš„å£°éŸ³å¤§å°ï¼ˆå–å€¼ï¼š0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	wpn_fSilenceFireSoundVolume,		/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ­¦å™¨æ¶ˆéŸ³çŠ¶æ€ä¸‹å¼€æªå£°éŸ³å¤§å°ï¼ˆå–å€¼ï¼š0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	wpn_fKnifeSoundVolume1,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå‡»å¢™å£°éŸ³å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	wpn_fKnifeSoundVolume2,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šå‡»ç©ºå£°éŸ³å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	wpn_fKnifeSoundVolume3,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé‡å‡»å£°éŸ³å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	wpn_fKnifeSoundVolume4,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šè½»å‡»å£°éŸ³1å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	wpn_fKnifeSoundVolume5,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šè½»å‡»å£°éŸ³2å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰ */
+	wpn_fShotgunStartReloadTime,		/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ•£å¼¹å¼€å§‹æ¢å¼¹çš„æ—¶é—´ */
+	wpn_fShotgunAfterReloadTime,		/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šæ•£å¼¹ç»“æŸæ¢å¼¹çš„æ—¶é—´ */
+	wpn_fKnifeSlashAngleOffset,		/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šè½»å‡»è§’åº¦åˆ¤æ–­é—´éš”ï¼ˆå»ºè®®å€¼ï¼š5.0 <= é—´éš” <= è½»å‡»è§’åº¦ï¼‰ */
+	wpn_fKnifeStabAngleOffset,		/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé‡å‡»è§’åº¦åˆ¤æ–­é—´éš”ï¼ˆå»ºè®®å€¼ï¼š5.0 <= é—´éš” <= é‡å‡»è§’åº¦ï¼‰ */
+	wpn_fKnifeSlashHeight,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šè½»å‡»é«˜åº¦ï¼ˆå»ºè®®å€¼ï¼š1.0 <= é«˜åº¦ <= 50.0ï¼‰ */
+	wpn_fKnifeStabHeight,			/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé‡å‡»é«˜åº¦ï¼ˆå»ºè®®å€¼ï¼š1.0 <= é«˜åº¦ <= 50.0ï¼‰ */
+	wpn_fKnifeSlashHeightOffset,		/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šè½»å‡»é«˜åº¦åˆ¤æ–­é—´éš”ï¼ˆå»ºè®®å€¼ï¼š5.0 <= é—´éš” <= è½»å‡»é«˜åº¦ï¼‰ */
+	wpn_fKnifeStabHeightOffset,		/* ç±»å‹ï¼šfloat	ä»‹ç»ï¼šé‡å‡»é«˜åº¦åˆ¤æ–­é—´éš”ï¼ˆå»ºè®®å€¼ï¼š5.0 <= é—´éš” <= é‡å‡»é«˜åº¦ï¼‰ */
 }

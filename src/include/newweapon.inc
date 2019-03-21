@@ -1,451 +1,569 @@
+/**************************************************************************
+
+Weapon Template v1.38
+
+ä½œè€…: IzayoiFly
+
+æ—¥æœŸ: 2018-11-16
+
+æè¿°: ç”¨æ¨¡æ¿æ–¹å¼æ·»åŠ ä¸€äº›æ–°æ­¦å™¨
+
+**************************************************************************/
+
 #if defined _NEWWEAPON_included
   #endinput
 #endif
 #define _NEWWEAPON_included
 
-// ===========================<¶îÍâµÄinc>=========================== //
+// ===========================<é¢å¤–çš„inc>=========================== //
 #include <wpn_const>
 
-// ===========================<¹¦ÄÜ½Ó¿Ú>=========================== //
-// ½éÉÜ£º×¢²áÒ»¸öÖ÷ÎäÆ÷»ò¸±ÎäÆ÷
-// ²ÎÊıĞÅÏ¢£º
-// 	iWeaponId£ºÎäÆ÷ID£¨CSW_***£©
-// 	iWeaponData£ºÎäÆ÷ÕûÊıĞÍ²ÎÊı£¬¾ßÌå¿´wpn_const.inc
-//	fWeaponData£ºÎäÆ÷¸¡µãĞÍ²ÎÊı£¬¾ßÌå¿´wpn_const.inc
-// 	szWeaponList£ºÎäÆ÷SPR£¨weapon_***.txt£©
-// 	szKillSPR£ºÉ±µĞSPR
-// 	szWeaponPModel£ºPÄ£ĞÍ
-// 	szWeaponVModel£ºVÄ£ĞÍ
-// 	szWeaponWModel£ºWÄ£ĞÍ
-// 	szWeaponVModelSight£º»úÃéVÄ£ĞÍ
-// 	szFireSound1£º¿ªÇ¹ÉùÒô1
-// 	szFireSound2£º¿ªÇ¹ÉùÒô2
-// 	szSilenceFireSound1£ºÏûÒô×´Ì¬¿ªÇ¹ÉùÒô1
-// 	szSilenceFireSound2£ºÏûÒô×´Ì¬¿ªÇ¹ÉùÒô2
-// 	szCommand£º¹ºÂòÃüÁî
-// ·µ»ØÖµ£ºÎäÆ÷ĞòºÅ
-native WPN_RegisterWeapon(iWeaponId, iWeaponData[MaxWeaponIntData], Float:fWeaponData[MaxWeaponFloatData], szWeaponList[], szKillSPR[], szWeaponPModel[], szWeaponVModel[], szWeaponWModel[], szWeaponVModelSight[], szFireSound1[], szFireSound2[], szSilenceFireSound1[], szSilenceFireSound2[], szCommand[])
+// ===========================<åŠŸèƒ½æ¥å£>=========================== //
 
-// ½éÉÜ£ºÉèÖÃÎäÆ÷µÄ¶¯×÷
-// ²ÎÊıĞÅÏ¢£º
-//	i£ºÎäÆ÷ĞòºÅ
-//	IDLE£ºÎäÆ÷¾²Ö¹¶¯×÷
-//	RELOAD£ºÎäÆ÷»»µ¯¶¯×÷
-//	DRAW£ºÎäÆ÷ÌÍ³ö¶¯×÷
-//	SHOOT£ºÈı¸öÎäÆ÷Éä»÷¶¯×÷£¬Èç¹ûÎäÆ÷ÀàĞÍÊÇCSW_ELITEµÄ»°ÄÇÃ´SHOOT[0]Îª×ó¹¥»÷£¬SHOOT[1]ÎªÓÒ¹¥»÷£¨×óÊÖ×´Ì¬¡£¡£¡£=¡£=£©£¬SHOOT[2]±»ºöÂÔ
-//	RELOADMODE£º·Ö±ğÊÇANIM_START_RELOAD£¨¿ªÊ¼Ìîµ¯£©, ANIM_INSERT£¨Ìîµ¯£©, ANIM_AFTER_RELOAD£¨½áÊøÌîµ¯£©
-//	SIGHT_OPEN£º¿ªÆô»úÃéµÄ¶¯×÷
-//	SIGHT_CLOSE£º¹Ø±Õ»úÃéµÄ¶¯×÷
-//	DETACH_SILENCER£º¹Ø±ÕÏûÒôµÄ¶¯×÷
-//	ATTACH_SILENCER£º¿ªÆôÏûÒôµÄ¶¯×÷
-//	IDLE_SILENCED£ºÏûÒô×´Ì¬ÏÂµÄ¾²Ö¹¶¯×÷
-//	RELOAD_SILENCED£ºÏûÒô×´Ì¬ÏÂµÄ»»µ¯¶¯×÷
-//	DRAW_SILENCED£ºÏûÒô×´Ì¬ÏÂµÄÌÍ³ö¶¯×÷
-//	SHOOT_SILENCED£ºÏûÒô×´Ì¬ÏÂµÄÈı¸öÎäÆ÷Éä»÷¶¯×÷
-// ·µ»ØÖµ£ºÎŞ
-native WPN_SetWeaponAnim(i, IDLE, RELOAD, DRAW, SHOOT[3], RELOADMODE[3], SIGHT_OPEN, SIGHT_CLOSE, DETACH_SILENCER, ATTACH_SILENCER, IDLE_SILENCED, RELOAD_SILENCED, DRAW_SILENCED, SHOOT_SILENCED[3])
+/**
+ * æ³¨å†Œä¸€ä¸ªä¸»æ­¦å™¨æˆ–å‰¯æ­¦å™¨
+ * 
+ * @param iWeaponId		æ­¦å™¨IDï¼ˆCSW_***ï¼‰
+ * @param iWeaponData		æ­¦å™¨æ•´æ•°å‹å‚æ•°ï¼Œå…·ä½“çœ‹wpn_const.inc
+ * @param fWeaponData		æ­¦å™¨æµ®ç‚¹å‹å‚æ•°ï¼Œå…·ä½“çœ‹wpn_const.inc
+ * @param szWeaponList		æ­¦å™¨SPRï¼ˆweapon_***.txtï¼‰
+ * @param szKillSPR		æ€æ•ŒSPR
+ * @param szWeaponPModel	Pæ¨¡å‹
+ * @param szWeaponVModel	Væ¨¡å‹
+ * @param szWeaponWModel	Wæ¨¡å‹
+ * @param szWeaponVModelSight	æœºç„Væ¨¡å‹
+ * @param szFireSound1		å¼€æªå£°éŸ³1
+ * @param szFireSound2		å¼€æªå£°éŸ³2
+ * @param szSilenceFireSound1	æ¶ˆéŸ³çŠ¶æ€å¼€æªå£°éŸ³1
+ * @param szSilenceFireSound2	æ¶ˆéŸ³çŠ¶æ€å¼€æªå£°éŸ³2
+ * @param szCommand		è´­ä¹°å‘½ä»¤
+ * 
+ * @return			æ­¦å™¨åºå·
+ */
+native WPN_RegisterWeapon(iWeaponId, iWeaponData[MaxWeaponIntData], Float:fWeaponData[MaxWeaponFloatData], szWeaponList[], szKillSPR[],
+szWeaponPModel[], szWeaponVModel[], szWeaponWModel[], szWeaponVModelSight[], szFireSound1[], szFireSound2[], szSilenceFireSound1[],
+szSilenceFireSound2[], szCommand[]);
 
-// ½éÉÜ£º×¢²áÒ»¸ö½üÉíÎäÆ÷
-// ²ÎÊıĞÅÏ¢£º
-//	szWeaponList£ºÎäÆ÷SPR£¨weapon_***.txt£©
-//	szKillSPR£ºÉ±µĞSPR
-//	szWeaponPModel£ºPÄ£ĞÍ
-//	szWeaponVModel£ºVÄ£ĞÍ
-//	szKnifeSound1£ºÌÍ³öÉùÒô
-//	szKnifeSound2£º»÷Ç½ÉùÒô
-//	szKnifeSound3£º»÷¿ÕÉùÒô
-//	szKnifeSound4£ºÖØ»÷ÉùÒô
-//	szKnifeSound5£ºÇá»÷1ÉùÒô
-//	szKnifeSound6£ºÇá»÷2ÉùÒô
-//	fKnifeData£ºµ¶×Ó¸¡µãĞÍ²ÎÊı£¬¾ßÌå¿´wpn_const.inc
-//	szCommand£º¹ºÂòÃüÁî
-//	iCost£º¼Û¸ñ
-//	iTeam£º¹ºÂò¶ÓÎé£¬1ÊÇT£¬2ÊÇCT£¬0ÊÇËùÓĞ¶ÓÎé
-// ·µ»ØÖµ£ºÎäÆ÷ĞòºÅ
-native WPN_RegisterKnife(szWeaponList[], szKillSPR[], szWeaponPModel[], szWeaponVModel[], szKnifeSound1[], szKnifeSound2[], szKnifeSound3[], szKnifeSound4[], szKnifeSound5[], szKnifeSound6[], Float:fKnifeData[MaxKnifeFloatData], szCommand[], iCost, iTeam)
+/**
+ * è®¾ç½®æ­¦å™¨çš„åŠ¨ä½œ
+ * 
+ * @param i			æ­¦å™¨åºå·
+ * @param IDLE			æ­¦å™¨é™æ­¢åŠ¨ä½œ
+ * @param RELOAD		æ­¦å™¨æ¢å¼¹åŠ¨ä½œ
+ * @param DRAW			æ­¦å™¨æå‡ºåŠ¨ä½œ
+ * @param SHOOT			ä¸‰ä¸ªæ­¦å™¨å°„å‡»åŠ¨ä½œï¼Œå¦‚æœæ­¦å™¨ç±»å‹æ˜¯CSW_ELITEçš„è¯é‚£ä¹ˆSHOOT[0]ä¸ºå·¦æ”»å‡»ï¼ŒSHOOT[1]ä¸ºå³æ”»å‡»ï¼ˆå·¦æ‰‹çŠ¶æ€ã€‚ã€‚ã€‚=ã€‚=ï¼‰ï¼ŒSHOOT[2]è¢«å¿½ç•¥
+ * @param RELOADMODE		åˆ†åˆ«æ˜¯ANIM_START_RELOADï¼ˆå¼€å§‹å¡«å¼¹ï¼‰, ANIM_INSERTï¼ˆå¡«å¼¹ï¼‰, ANIM_AFTER_RELOADï¼ˆç»“æŸå¡«å¼¹ï¼‰
+ * @param SIGHT_OPEN		å¼€å¯æœºç„çš„åŠ¨ä½œ
+ * @param SIGHT_CLOSE		å…³é—­æœºç„çš„åŠ¨ä½œ
+ * @param DETACH_SILENCER	å…³é—­æ¶ˆéŸ³çš„åŠ¨ä½œ
+ * @param ATTACH_SILENCER	å¼€å¯æ¶ˆéŸ³çš„åŠ¨ä½œ
+ * @param IDLE_SILENCED		æ¶ˆéŸ³çŠ¶æ€ä¸‹çš„é™æ­¢åŠ¨ä½œ
+ * @param RELOAD_SILENCED	æ¶ˆéŸ³çŠ¶æ€ä¸‹çš„æ¢å¼¹åŠ¨ä½œ
+ * @param DRAW_SILENCED		æ¶ˆéŸ³çŠ¶æ€ä¸‹çš„æå‡ºåŠ¨ä½œ
+ * @param SHOOT_SILENCED	æ¶ˆéŸ³çŠ¶æ€ä¸‹çš„ä¸‰ä¸ªæ­¦å™¨å°„å‡»åŠ¨ä½œ
+ * 
+ * @return			æ— 
+ */
+native WPN_SetWeaponAnim(i, IDLE, RELOAD, DRAW, SHOOT[3], RELOADMODE[3], SIGHT_OPEN, SIGHT_CLOSE, DETACH_SILENCER, ATTACH_SILENCER,
+IDLE_SILENCED, RELOAD_SILENCED, DRAW_SILENCED, SHOOT_SILENCED[3]);
 
-// ½éÉÜ£ºÉèÖÃ½üÉíÎäÆ÷µÄ¶¯×÷
-// ²ÎÊıĞÅÏ¢£º
-//	i£ºÎäÆ÷ĞòºÅ
-//	IDLE£º¾²Ö¹¶¯×÷
-//	SLASH1£ºÇá»÷¶¯×÷1
-//	SLASH2£ºÇá»÷¶¯×÷2
-//	DRAW£ºÌÍ³ö¶¯×÷
-//	STAB£ºÖØ»÷¶¯×÷
-//	STABMISS£ºÖØ»÷miss¶¯×÷
-//	MIDSLASH£ºÇá»÷¶¯×÷
-//	MIDSLASHMISS£ºÇá»÷miss¶¯×÷
-//	SLASHBEGIN£ºÇá»÷ÑÓ³Ù¶¯×÷
-//	STABBEGIN£ºÖØ»÷ÑÓ³Ù¶¯×÷
-// ·µ»ØÖµ£ºÎŞ
-native WPN_SetKnifeAnim(i, IDLE, SLASH1, SLASH2, DRAW, STAB, STABMISS, MIDSLASH, MIDSLASHMISS, SLASHBEGIN, STABBEGIN)
+/**
+ * æ³¨å†Œä¸€ä¸ªè¿‘èº«æ­¦å™¨
+ * 
+ * @param szWeaponList		æ­¦å™¨SPRï¼ˆweapon_***.txtï¼‰
+ * @param szKillSPR		æ€æ•ŒSPR
+ * @param szWeaponPModel	Pæ¨¡å‹
+ * @param szWeaponVModel	Væ¨¡å‹
+ * @param szKnifeSound1		æå‡ºå£°éŸ³
+ * @param szKnifeSound2		å‡»å¢™å£°éŸ³
+ * @param szKnifeSound3		å‡»ç©ºå£°éŸ³
+ * @param szKnifeSound4		é‡å‡»å£°éŸ³
+ * @param szKnifeSound5		è½»å‡»1å£°éŸ³
+ * @param szKnifeSound6		è½»å‡»2å£°éŸ³
+ * @param fKnifeData		åˆ€å­æµ®ç‚¹å‹å‚æ•°ï¼Œå…·ä½“çœ‹wpn_const.inc
+ * @param szCommand		è´­ä¹°å‘½ä»¤
+ * @param iCost			ä»·æ ¼
+ * @param iTeam			è´­ä¹°é˜Ÿä¼ï¼Œ1æ˜¯Tï¼Œ2æ˜¯CTï¼Œ0æ˜¯æ‰€æœ‰é˜Ÿä¼
+ * 
+ * @return			æ­¦å™¨åºå·
+ */
+native WPN_RegisterKnife(szWeaponList[], szKillSPR[], szWeaponPModel[], szWeaponVModel[], szKnifeSound1[], szKnifeSound2[],
+szKnifeSound3[], szKnifeSound4[], szKnifeSound5[], szKnifeSound6[], Float:fKnifeData[MaxKnifeFloatData], szCommand[], iCost, iTeam);
 
-// ½éÉÜ£º×¢²áÒ»¸öÍ¶ÖÀÎäÆ÷
-// ²ÎÊıĞÅÏ¢£º
-//	szWeaponList£ºÎäÆ÷SPR£¨weapon_***.txt£©
-//	szKillSPR£ºÉ±µĞSPR
-//	szExplodeSPR£º±¬Õ¨SPR
-//	szWeaponPModel£ºPÄ£ĞÍ
-//	szWeaponVModel£ºVÄ£ĞÍ
-//	szWeaponWModel£ºWÄ£ĞÍ
-//	szExplodeSound£º±¬Õ¨ÉùÒô
-//	fDrawTime£ºÌÍ³öÊ±¼ä
-//	fExplodeTime£º±¬Õ¨Ê±¼ä
-//	fRange£º±¬Õ¨°ë¾¶
-//	fMaxSpeed£ºĞĞ×ßËÙ¶È
-//	fDamage£ºÉËº¦±¶Êı
-//	fExplodeSoundVolume£º±¬Õ¨ÉùÒô´óĞ¡£¨0.0 <= ÊıÖµ <= 1.0£©
-//	szCommand£º¹ºÂòÃüÁî
-//	iCost£º¼Û¸ñ
-//	iTeam£º¹ºÂò¶ÓÎé£¬1ÊÇT£¬2ÊÇCT£¬0ÊÇËùÓĞ¶ÓÎé
-//	iWModelBody£ºWÄ£ĞÍ×ÓÄ£ĞÍµÄĞòºÅ£¨Ã»ÓĞµÄ»°Ğ´0£©
-// ·µ»ØÖµ£ºÎäÆ÷ĞòºÅ
-native WPN_RegisterGrenade(szWeaponList[], szKillSPR[], szExplodeSPR[], szWeaponPModel[], szWeaponVModel[], szWeaponWModel[], szExplodeSound[], Float:fDrawTime, Float:fExplodeTime, Float:fRange, Float:fMaxSpeed, Float:fDamage, Float:fExplodeSoundVolume, szCommand[], iCost, iTeam, iWModelBody)
+/**
+ * è®¾ç½®è¿‘èº«æ­¦å™¨çš„åŠ¨ä½œ
+ * 
+ * @param i			æ­¦å™¨åºå·
+ * @param IDLE			é™æ­¢åŠ¨ä½œ
+ * @param SLASH1		è½»å‡»åŠ¨ä½œ1
+ * @param SLASH2		è½»å‡»åŠ¨ä½œ2
+ * @param DRAW			æå‡ºåŠ¨ä½œ
+ * @param STAB			é‡å‡»åŠ¨ä½œ
+ * @param STABMISS		é‡å‡»missåŠ¨ä½œ
+ * @param MIDSLASH		è½»å‡»åŠ¨ä½œ
+ * @param MIDSLASHMISS		è½»å‡»missåŠ¨ä½œ
+ * @param SLASHBEGIN		è½»å‡»å»¶è¿ŸåŠ¨ä½œ
+ * @param STABBEGIN		é‡å‡»å»¶è¿ŸåŠ¨ä½œ
+ * 
+ * @return			æ— 
+ */
+native WPN_SetKnifeAnim(i, IDLE, SLASH1, SLASH2, DRAW, STAB, STABMISS, MIDSLASH, MIDSLASHMISS, SLASHBEGIN, STABBEGIN);
 
-// ½éÉÜ£º¸øÍæ¼ÒÎäÆ÷
-// ²ÎÊıĞÅÏ¢£º
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ·µ»ØÖµ£ºÎäÆ÷ÊµÌåid£¨iEntity£©
-native WPN_GiveWeapon(id, i)
+/**
+ * æ³¨å†Œä¸€ä¸ªæŠ•æ·æ­¦å™¨
+ * 
+ * @param szWeaponList		æ­¦å™¨SPRï¼ˆweapon_***.txtï¼‰
+ * @param szKillSPR		æ€æ•ŒSPR
+ * @param szExplodeSPR		çˆ†ç‚¸SPR
+ * @param szWeaponPModel	Pæ¨¡å‹
+ * @param szWeaponVModel	Væ¨¡å‹
+ * @param szWeaponWModel	Wæ¨¡å‹
+ * @param szExplodeSound	çˆ†ç‚¸å£°éŸ³
+ * @param fDrawTime		æå‡ºæ—¶é—´
+ * @param fExplodeTime		çˆ†ç‚¸æ—¶é—´
+ * @param fRange		çˆ†ç‚¸åŠå¾„
+ * @param fMaxSpeed		è¡Œèµ°é€Ÿåº¦
+ * @param fDamage		ä¼¤å®³å€æ•°
+ * @param fExplodeSoundVolume	çˆ†ç‚¸å£°éŸ³å¤§å°ï¼ˆ0.0 <= æ•°å€¼ <= 1.0ï¼‰
+ * @param szCommand		è´­ä¹°å‘½ä»¤
+ * @param iCost			ä»·æ ¼
+ * @param iTeam			è´­ä¹°é˜Ÿä¼ï¼Œ1æ˜¯Tï¼Œ2æ˜¯CTï¼Œ0æ˜¯æ‰€æœ‰é˜Ÿä¼
+ * @param iWModelBody		Wæ¨¡å‹å­æ¨¡å‹çš„åºå·ï¼ˆæ²¡æœ‰çš„è¯å†™0ï¼‰
+ * 
+ * @return			æ­¦å™¨åºå·
+ */
+native WPN_RegisterGrenade(szWeaponList[], szKillSPR[], szExplodeSPR[], szWeaponPModel[], szWeaponVModel[], szWeaponWModel[],
+szExplodeSound[], Float:fDrawTime, Float:fExplodeTime, Float:fRange, Float:fMaxSpeed, Float:fDamage, Float:fExplodeSoundVolume,
+szCommand[], iCost, iTeam, iWModelBody);
 
-// ½éÉÜ£º»ñÈ¡ÎäÆ÷µÄ²ÎÊı
-// ²ÎÊıĞÅÏ¢£º
-//	i£ºÎäÆ÷ĞòºÅ
-//	id£ºÍæ¼Òid
-//	iType£ºÒª»ñÈ¡µÄÀàĞÍ£¨²Î¿¼wpn_const.inc£©
-//	szReturn£¬iLen£º½«»ñÈ¡µÄÄÚÈİ´æ´¢µ½³¤¶ÈÎªlenµÄ×Ö·û´®szReturnÀï
-// ·µ»ØÖµ£ºÒª»ñÈ¡µÄÖµ
-native WPN_GetParamInt(i, id, iType)
-native Float:WPN_GetParamFloat(i, id, iType)
-native WPN_GetParamString(i, id, iType, szReturn[], iLen)
+/**
+ * ç»™ç©å®¶æ­¦å™¨
+ * 
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * @return			æ­¦å™¨å®ä½“idï¼ˆiEntityï¼‰
+ */
+native WPN_GiveWeapon(id, i);
 
-// ½éÉÜ£ºÉèÖÃÎäÆ÷µÄ²ÎÊı
-// ²ÎÊıĞÅÏ¢£º
-//	i£ºÎäÆ÷ĞòºÅ
-//	id£ºÍæ¼Òid
-//	iType£ºÒªÉèÖÃµÄÀàĞÍ£¨²Î¿¼wpn_const.inc£©
-//	iValue£¬fValue£¬szValue£ºÒªÉèÖÃµÄÖµ
-// ·µ»ØÖµ£ºÎŞ
-native WPN_SetParamInt(i, id, iType, iValue)
-native WPN_SetParamFloat(i, id, iType, Float:fValue)
-native WPN_SetParamString(i, id, iType, szValue[])
+/**
+ * è·å–æ­¦å™¨çš„å‚æ•°
+ * 
+ * @param i			æ­¦å™¨åºå·
+ * @param id			ç©å®¶id
+ * @param iType			è¦è·å–çš„ç±»å‹ï¼ˆå‚è€ƒwpn_const.incï¼‰
+ * @param szReturn		å°†è·å–çš„å†…å®¹å­˜å‚¨åˆ°szReturné‡Œ
+ * @param iLen			å­—ç¬¦ä¸²çš„é•¿åº¦
+ * 
+ * @return			è¦è·å–çš„å€¼
+ */
+native WPN_GetParamInt(i, id, iType);
+native Float:WPN_GetParamFloat(i, id, iType);
+native WPN_GetParamString(i, id, iType, szReturn[], iLen);
 
-// ½éÉÜ£ºÖ´ĞĞÒ»´Î¹¥»÷
-// ²ÎÊıĞÅÏ¢£º
-//	iAttacker£º¹¥»÷Õßid
-//	iVictim£ºÊÜº¦Õßid
-//	iEntity£º¹¥»÷ÕßÊ¹ÓÃµÄÊµÌåid
-//	fParam£º¸¡µãĞÍ²ÎÊı
-//		fParam[0]£º¾àÀë
-//		fParam[1]£º½Ç¶È£¨½¨ÒéÖµ£º60.0 <= ½Ç¶È <= 120.0£©
-//		fParam[2]£º½Ç¶ÈËÑË÷¼ä¸ô£¨½¨ÒéÖµ£º20.0×óÓÒ£¬×îµÍÎª1.0£©
-//		fParam[3]£º¸ß¶È£¨½¨ÒéÖµ£º1.0 <= ¸ß¶È <= 50.0£©
-//		fParam[4]£º¸ß¶ÈËÑË÷¼ä¸ô£¨½¨ÒéÖµ£º5.0 <= ¸ß¶È <= 15.0£©
-//		fParam[5]£ºÉËº¦Öµ
-//	fOrigin£º×ø±ê
-//	iDamageType£ºÉËº¦ÀàĞÍ
-//	iSpecial£ºÌØÊâ±ê¼Ç
-// ±¸×¢£º
-//	µ±ÉËº¦ÀàĞÍÎªDMGTYPE_SECTOR»òÕßDMGTYPE_LINEÊ±£¬×ø±êÎªÍæ¼Ò×ø±ê£»DMGTYPE_EXPLOSIONºÍDMGTYPE_TOUCH¿ÉÒÔÌîÊµÌå×ø±ê
-//	ÊÜº¦ÕßidÖ»ÓĞÔÚÉËº¦ÀàĞÍÎªDMGTYPE_TOUCHÊ±²Å»áÓÃµ½£¬ÆäËûÀàĞÍ¿ÉÒÔÎª0
-// ·µ»ØÖµ£º
-//	HIT_PLAYER	»÷ÖĞÍæ¼Ò£¨ÈËÖÊÒ²ÎªHIT_PLAYER£©
-//	HIT_ENTITY	»÷ÖĞÊµÌå
-//	HIT_WALL	»÷ÖĞworldspawn
-//	HIT_EMPTY	Î´»÷ÖĞ
-native WPN_ExecuteAttack(iAttacker, iVictim, iEntity, Float:fParam[6], Float:fOrigin[3], iDamageType, iSpecial)
+/**
+ * è®¾ç½®æ­¦å™¨çš„å‚æ•°
+ * 
+ * @param i			æ­¦å™¨åºå·
+ * @param id			ç©å®¶id
+ * @param iType			è¦è®¾ç½®çš„ç±»å‹ï¼ˆå‚è€ƒwpn_const.incï¼‰
+ * @param iValue		è¦è®¾ç½®çš„å€¼
+ * @param fValue		è¦è®¾ç½®çš„å€¼
+ * @param szValue		è¦è®¾ç½®çš„å€¼
+ * 
+ * @return			æ— 
+ */
+native WPN_SetParamInt(i, id, iType, iValue);
+native WPN_SetParamFloat(i, id, iType, Float:fValue);
+native WPN_SetParamString(i, id, iType, szValue[]);
 
-// ½éÉÜ£ºÉú³ÉÑª
-// ²ÎÊıĞÅÏ¢£º
-//	fOrigin£º×ø±ê
-//	iColor£ºÑÕÉ«
-//	iAmount£ºÊıÁ¿
-// ·µ»ØÖµ£ºÎŞ
-native WPN_SpawnBlood(Float:fOrigin[3], iColor, iAmount)
+/**
+ * æ‰§è¡Œä¸€æ¬¡æ”»å‡»
+ * 
+ * @note: 
+ * å½“ä¼¤å®³ç±»å‹ä¸ºDMGTYPE_SECTORæˆ–è€…DMGTYPE_LINEæ—¶ï¼Œåæ ‡ä¸ºç©å®¶åæ ‡ï¼›DMGTYPE_EXPLOSIONå’ŒDMGTYPE_TOUCHå¯ä»¥å¡«å®ä½“åæ ‡
+ * å—å®³è€…idåªæœ‰åœ¨ä¼¤å®³ç±»å‹ä¸ºDMGTYPE_TOUCHæ—¶æ‰ä¼šç”¨åˆ°ï¼Œå…¶ä»–ç±»å‹å¯ä»¥ä¸º0
 
-// ½éÉÜ£ºÉú³ÉÑÌÎí
-// ²ÎÊıĞÅÏ¢£º
-//	fOrigin£º×ø±ê
-// ·µ»ØÖµ£ºÎŞ
-native WPN_FakeSmoke(Float:fOrigin[3])
+ * @param iAttacker		æ”»å‡»è€…id
+ * @param iVictim		å—å®³è€…id
+ * @param iEntity		æ”»å‡»è€…ä½¿ç”¨çš„å®ä½“id
+ * @param fParam[0]		è·ç¦»
+ * @param fParam[1]		è§’åº¦ï¼ˆå»ºè®®å€¼ï¼š60.0 <= è§’åº¦ <= 120.0ï¼‰
+ * @param fParam[2]		è§’åº¦æœç´¢é—´éš”ï¼ˆå»ºè®®å€¼ï¼š20.0å·¦å³ï¼Œæœ€ä½ä¸º1.0ï¼‰
+ * @param fParam[3]		é«˜åº¦ï¼ˆå»ºè®®å€¼ï¼š1.0 <= é«˜åº¦ <= 50.0ï¼‰
+ * @param fParam[4]		é«˜åº¦æœç´¢é—´éš”ï¼ˆå»ºè®®å€¼ï¼š5.0 <= é«˜åº¦ <= 15.0ï¼‰
+ * @param fParam[5]		ä¼¤å®³å€¼
+ * @param fOrigin		åæ ‡
+ * @param iDamageType		ä¼¤å®³ç±»å‹
+ * @param iSpecial		ç‰¹æ®Šæ ‡è®°
+ * 
+ * @return HIT_PLAYER		å‡»ä¸­ç©å®¶ï¼ˆäººè´¨ä¹Ÿä¸ºHIT_PLAYERï¼‰
+ * @return HIT_ENTITY		å‡»ä¸­å®ä½“
+ * @return HIT_WALL		å‡»ä¸­worldspawn
+ * @return HIT_EMPTY		æœªå‡»ä¸­
+ */
+native WPN_ExecuteAttack(iAttacker, iVictim, iEntity, Float:fParam[6], Float:fOrigin[3], iDamageType, iSpecial);
 
-// ½éÉÜ£º²¹¸ø×Óµ¯
-// ²ÎÊıĞÅÏ¢£º
-//	id£ºÍæ¼Òid
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	i£ºÎäÆ÷ĞòºÅ
-//	iFull£ºÊÇ·ñ²¹Âú
-// ·µ»ØÖµ£ºÎŞ
-native WPN_GiveAmmo(id, iEntity, i, iFull)
+/**
+ * ç”Ÿæˆè¡€
+ * 
+ * @param fOrigin		åæ ‡
+ * @param iColor		é¢œè‰²
+ * @param iAmount		æ•°é‡
+ * 
+ * @return 			æ— 
+ */
+native WPN_SpawnBlood(Float:fOrigin[3], iColor, iAmount);
 
-// ===========================<ÊÂ¼ş½Ó¿Ú>=========================== //
+/**
+ * ç”ŸæˆçƒŸé›¾
+ * 
+ * @param fOrigin		åæ ‡
+ * 
+ * @return			æ— 
+ */
+native WPN_FakeSmoke(Float:fOrigin[3]);
 
-// ½éÉÜ£º×ó¼üpre¹¥»÷ÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶Ï×ó¼ü¹¥»÷
-//	WPN_HANDLED£º´ò¶Ï×ó¼ü¹¥»÷²¢Ö´ĞĞÒ»´Î¼Ù¹¥»÷
-forward WPN_PrimaryPreAttack(iEntity, id, i)
+/**
+ * è¡¥ç»™å­å¼¹
+ * 
+ * @param id			ç©å®¶id
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param i			æ­¦å™¨åºå·
+ * @param iFull			æ˜¯å¦è¡¥æ»¡
+ * 
+ * @return			æ— 
+ */
+native WPN_GiveAmmo(id, iEntity, i, iFull);
 
-// ½éÉÜ£º×ó¼üpre¹¥»÷ÊÂ¼şpost
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_PrimaryPreAttack_Post(iEntity, id, i)
+// ===========================<äº‹ä»¶æ¥å£>=========================== //
 
-// ½éÉÜ£º×ó¼üpost¹¥»÷ÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶Ï×ó¼üpost¹¥»÷
-forward WPN_PrimaryPostAttack(iEntity, id, i)
+/**
+ * å·¦é”®preæ”»å‡»äº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­å·¦é”®æ”»å‡»
+ * @return WPN_HANDLED		æ‰“æ–­å·¦é”®æ”»å‡»å¹¶æ‰§è¡Œä¸€æ¬¡å‡æ”»å‡»
+ */
+forward WPN_PrimaryPreAttack(iEntity, id, i);
 
-// ½éÉÜ£º×ó¼üpost¹¥»÷ÊÂ¼şpost
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_PrimaryPostAttack_Post(iEntity, id, i)
+/**
+ * å·¦é”®preæ”»å‡»äº‹ä»¶post
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ */
+forward WPN_PrimaryPreAttack_Post(iEntity, id, i);
 
-// ½éÉÜ£ºÓÒ¼üpre¹¥»÷ÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏÓÒ¼ü¹¥»÷
-forward WPN_SecondaryPreAttack(iEntity, id, i)
+/**
+ * å·¦é”®postæ”»å‡»äº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNOREDï¼šæ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDEï¼šæ‰“æ–­å·¦é”®postæ”»å‡»
+ */
+forward WPN_PrimaryPostAttack(iEntity, id, i);
 
-// ½éÉÜ£ºÓÒ¼üpre¹¥»÷ÊÂ¼şpost
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_SecondaryPreAttack_Post(iEntity, id, i)
+/**
+ * å·¦é”®postæ”»å‡»äº‹ä»¶post
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ */
+forward WPN_PrimaryPostAttack_Post(iEntity, id, i);
 
-// ½éÉÜ£ºÓÒ¼üpost¹¥»÷ÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏÓÒ¼üpost¹¥»÷
-forward WPN_SecondaryPostAttack(iEntity, id, i)
+/**
+ * å³é”®preæ”»å‡»äº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­å³é”®æ”»å‡»
+ */
+forward WPN_SecondaryPreAttack(iEntity, id, i);
 
-// ½éÉÜ£ºÓÒ¼üpost¹¥»÷ÊÂ¼şpost
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_SecondaryPostAttack_Post(iEntity, id, i)
+/**
+ * å³é”®preæ”»å‡»äº‹ä»¶post
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ */
+forward WPN_SecondaryPreAttack_Post(iEntity, id, i);
 
-// ½éÉÜ£ºµ¶×ÓÇá»÷ÑÓ³Ù½áÊøÊÂ¼ş£¨Î´¹¥»÷£©
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶Ï×ó¼ü½áÊø¹¥»÷
-forward WPN_PrimaryAttackEnd(iEntity, id, i)
+/**
+ * å³é”®postæ”»å‡»äº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­å³é”®postæ”»å‡»
+ */
+forward WPN_SecondaryPostAttack(iEntity, id, i);
 
-// ½éÉÜ£ºµ¶×ÓÇá»÷ÑÓ³Ù½áÊøpostÊÂ¼ş£¨ÒÑ¹¥»÷£©
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_PrimaryAttackEnd_Post(iEntity, id, i)
+/**
+ * å³é”®postæ”»å‡»äº‹ä»¶post
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ */
+forward WPN_SecondaryPostAttack_Post(iEntity, id, i);
 
-// ½éÉÜ£ºµ¶×ÓÖØ»÷ÑÓ³Ù½áÊøÊÂ¼ş£¨Î´¹¥»÷£©
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏÓÒ¼ü½áÊø¹¥»÷
-forward WPN_SecondaryAttackEnd(iEntity, id, i)
+/**
+ * åˆ€å­è½»å‡»å»¶è¿Ÿç»“æŸäº‹ä»¶ï¼ˆæœªæ”»å‡»ï¼‰
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­å·¦é”®ç»“æŸæ”»å‡»
+ */
+forward WPN_PrimaryAttackEnd(iEntity, id, i);
 
-// ½éÉÜ£ºµ¶×ÓÖØ»÷ÑÓ³Ù½áÊøpostÊÂ¼ş£¨ÒÑ¹¥»÷£©
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_SecondaryAttackEnd_Post(iEntity, id, i)
+/**
+ * åˆ€å­è½»å‡»å»¶è¿Ÿç»“æŸpostäº‹ä»¶ï¼ˆå·²æ”»å‡»ï¼‰
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ */
+forward WPN_PrimaryAttackEnd_Post(iEntity, id, i);
 
-// ½éÉÜ£ºÎäÆ÷µÄIdleÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏidleÊÂ¼ş
-forward WPN_WeaponIdle(iEntity, id, i)
+/**
+ * åˆ€å­é‡å‡»å»¶è¿Ÿç»“æŸäº‹ä»¶ï¼ˆæœªæ”»å‡»ï¼‰
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­å³é”®ç»“æŸæ”»å‡»
+ */
+forward WPN_SecondaryAttackEnd(iEntity, id, i);
 
-// ½éÉÜ£ºÎäÆ÷µÄpostframeÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏpostframeÊÂ¼ş
-forward WPN_WeaponPostFrame(iEntity, id, i)
+/**
+ * åˆ€å­é‡å‡»å»¶è¿Ÿç»“æŸpostäº‹ä»¶ï¼ˆå·²æ”»å‡»ï¼‰
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ */
+forward WPN_SecondaryAttackEnd_Post(iEntity, id, i);
 
-// ½éÉÜ£ºÎäÆ÷µÄReloadÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏReloadÊÂ¼ş
-forward WPN_WeaponReload(iEntity, id, i)
+/**
+ * æ­¦å™¨çš„Idleäº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­idleäº‹ä»¶
+ */
+forward WPN_WeaponIdle(iEntity, id, i);
 
-// ½éÉÜ£ºÎäÆ÷µÄReload PostÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏReload PostÊÂ¼ş
-forward WPN_WeaponReload_Post(iEntity, id, i)
+/**
+ * æ­¦å™¨çš„postframeäº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­postframeäº‹ä»¶
+ */
+forward WPN_WeaponPostFrame(iEntity, id, i);
 
-// ½éÉÜ£ºÎäÆ÷µÄDrawÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_WeaponDraw(iEntity, id, i)
+/**
+ * æ­¦å™¨çš„Reloadäº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­Reloadäº‹ä»¶
+ */
+forward WPN_WeaponReload(iEntity, id, i);
 
-// ½éÉÜ£º¹ºÂòÎäÆ÷PreÊÂ¼ş£¨Î´¹ºÂò£©
-// ²ÎÊıĞÅÏ¢£º
-//	id£ºÍæ¼Òid
-//	szCommand£ºÃüÁî
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶Ï¹ºÂòÊÂ¼ş
-forward WPN_BuyWeapon(id, const szCommand[])
+/**
+ * æ­¦å™¨çš„Reload Postäº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­Reload Postäº‹ä»¶
+ */
+forward WPN_WeaponReload_Post(iEntity, id, i);
 
-// ½éÉÜ£º¹ºÂòÎäÆ÷PostÊÂ¼ş£¨ÒÑ¹ºÂò£©
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_BuyWeapon_Post(iEntity, id, i)
+/**
+ * æ­¦å™¨çš„Drawäº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ */
+forward WPN_WeaponDraw(iEntity, id, i);
 
-// ½éÉÜ£ºÉèÖÃ×î´óËÙ¶ÈPreÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏÉèÖÃËÙ¶ÈÊÂ¼ş£»½¨ÒéÉèÖÃËÙ¶ÈÔÚÕâÀï£¬ÉèÖÃpev_maxspeedÖ®ºóÔÙ´ò¶Ï
-forward WPN_WeaponMaxSpeed(iEntity, id, i)
+/**
+ * è´­ä¹°æ­¦å™¨Preäº‹ä»¶ï¼ˆæœªè´­ä¹°ï¼‰
+ * 
+ * @param id			ç©å®¶id
+ * @param szCommand		å‘½ä»¤
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­è´­ä¹°äº‹ä»¶
+ */
+forward WPN_BuyWeapon(id, const szCommand[]);
 
-// ½éÉÜ£ºÉèÖÃ»÷ÍËPreÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	attacker£º¹¥»÷Õßid
-//	victim£ºÊÜº¦Õßid
-//	inflictor£º¹¥»÷ÊµÌåid
-//	i£ºÎäÆ÷ĞòºÅ
-//	damage£ºÉËº¦Öµ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶Ï»÷ÍËÊÂ¼ş£»½¨ÒéÉèÖÃ»÷ÍËÔÚÕâÀï£¬ÉèÖÃpev_velocityÖ®ºóÔÙ´ò¶Ï
-forward WPN_WeaponKnockBack(attacker, victim, inflictor, i, Float:damage)
+/**
+ * è´­ä¹°æ­¦å™¨Postäº‹ä»¶ï¼ˆå·²è´­ä¹°ï¼‰
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ */
+forward WPN_BuyWeapon_Post(iEntity, id, i);
 
-// ½éÉÜ£º²úÉúÑªÒºÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iColor£ºÑªÒºÑÕÉ«
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏÉú³ÉÑªÒºÊÂ¼ş
-forward WPN_HookSpawnBlood(iColor)
+/**
+ * è®¾ç½®æœ€å¤§é€Ÿåº¦Preäº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­è®¾ç½®é€Ÿåº¦äº‹ä»¶ï¼›å»ºè®®è®¾ç½®é€Ÿåº¦åœ¨è¿™é‡Œï¼Œè®¾ç½®pev_maxspeedä¹‹åå†æ‰“æ–­
+ */
+forward WPN_WeaponMaxSpeed(iEntity, id, i);
 
-// ½éÉÜ£ºÊÖÀ×±¬Õ¨PreÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	id£ºÍæ¼Òid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏÊÖÀ×±¬Õ¨ÊÂ¼ş£»½¨ÒéĞ´ÌØÊâÊÖÀ×ÔÚÕâÀï£¬Ğ´ÍêÌØĞ§£¨duang£©ºó´ò¶Ï
-forward WPN_HookGrenadeExplode(iEntity, id, i)
+/**
+ * è®¾ç½®å‡»é€€Preäº‹ä»¶
+ * 
+ * @param attacker		æ”»å‡»è€…id
+ * @param victim		å—å®³è€…id
+ * @param inflictor		æ”»å‡»å®ä½“id
+ * @param i			æ­¦å™¨åºå·
+ * @param damage		ä¼¤å®³å€¼
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­å‡»é€€äº‹ä»¶ï¼›å»ºè®®è®¾ç½®å‡»é€€åœ¨è¿™é‡Œï¼Œè®¾ç½®pev_velocityä¹‹åå†æ‰“æ–­
+ */
+forward WPN_WeaponKnockBack(attacker, victim, inflictor, i, Float:damage);
 
-// ½éÉÜ£ºÊÖÀ×±¬Õ¨PostÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	id£ºÍæ¼Òid
-//	iEntity£ºÎäÆ÷ÊµÌåid
-//	victim£ºÊÜº¦Õßid
-//	i£ºÎäÆ÷ĞòºÅ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_HookGrenadeExplode_Post(id, iEntity, victim, i)
+/**
+ * äº§ç”Ÿè¡€æ¶²äº‹ä»¶
+ * 
+ * @param iColor		è¡€æ¶²é¢œè‰²
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­ç”Ÿæˆè¡€æ¶²äº‹ä»¶
+ */
+forward WPN_HookSpawnBlood(iColor);
 
-// ½éÉÜ£ºBOT¹ºÂòÎäÆ÷PreÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	id£ºBOT id
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏBOT¹ºÂòËùÓĞÎäÆ÷ÊÂ¼ş
-forward WPN_BotBuyWeapon(id)
+/**
+ * æ‰‹é›·çˆ†ç‚¸Preäº‹ä»¶
+ * 
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param id			ç©å®¶id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­æ‰‹é›·çˆ†ç‚¸äº‹ä»¶ï¼›å»ºè®®å†™ç‰¹æ®Šæ‰‹é›·åœ¨è¿™é‡Œï¼Œå†™å®Œç‰¹æ•ˆï¼ˆduangï¼‰åæ‰“æ–­
+ */
+forward WPN_HookGrenadeExplode(iEntity, id, i);
 
-// ½éÉÜ£ºBOT¹ºÂòÎäÆ÷PostÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	id£ºBOT id
-//	i£ºÎäÆ÷ĞòºÅ
-//	iSpecialWeapon£ºÌØÊâÎäÆ÷ĞòºÅ£¨²Î¿¼wpn_const.inc£©
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏBOT¹ºÂòÄ³¸öÎäÆ÷ÊÂ¼ş
-forward WPN_BotBuyWeapon_Post(id, i, iSpecialWeapon)
+/**
+ * æ‰‹é›·çˆ†ç‚¸Postäº‹ä»¶
+ * 
+ * @param id			ç©å®¶id
+ * @param iEntity		æ­¦å™¨å®ä½“id
+ * @param victim		å—å®³è€…id
+ * @param i			æ­¦å™¨åºå·
+ * 
+ */
+forward WPN_HookGrenadeExplode_Post(id, iEntity, victim, i);
 
-// ½éÉÜ£ºÉËº¦ÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	ºÍHam_TakeDamageÒ»Ñù¾Í²»ÓÃ½éÉÜÁË¡£¡£
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏÉËº¦ÊÂ¼ş
-forward WPN_TakeDamage(victim, inflictor, attacker, Float:damage, damage_type)
+/**
+ * BOTè´­ä¹°æ­¦å™¨Preäº‹ä»¶
+ * 
+ * @param id			BOT id
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­BOTè´­ä¹°æ‰€æœ‰æ­¦å™¨äº‹ä»¶
+ */
+forward WPN_BotBuyWeapon(id);
 
-// ½éÉÜ£º¶ÁÈëÊı¾İÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	iSlot£ºÄ£°åslot
-//	i£ºÎäÆ÷ĞòºÅ
-//	key£º¼ü
-//	value£ºÖµ
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£ºÎŞ
-forward WPN_LoadFiles(iSlot, i, key[], value[])
+/**
+ * BOTè´­ä¹°æ­¦å™¨Postäº‹ä»¶
+ * 
+ * @param id			BOT id
+ * @param i			æ­¦å™¨åºå·
+ * @param iSpecialWeapon	ç‰¹æ®Šæ­¦å™¨åºå·ï¼ˆå‚è€ƒwpn_const.incï¼‰
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­BOTè´­ä¹°æŸä¸ªæ­¦å™¨äº‹ä»¶
+ */
+forward WPN_BotBuyWeapon_Post(id, i, iSpecialWeapon);
 
-// ½éÉÜ£ºDeathMsgÊÂ¼ş
-// ²ÎÊıĞÅÏ¢£º
-//	attacker£º¹¥»÷Õßid
-//	victim£ºÊÜº¦Õßid
-//	headshot£ºÊÇ·ñ±¬Í·
-//	szWeapon£º»÷É±spr£¨Èç¹ûÊÇĞÂÇ¹ÄÇÃ´ÊÇĞÂÇ¹µÄspr£¬²»ÊÇÔ­°æspr£©
-// ¿ÉÊ¹ÓÃ·µ»ØÖµ£º
-//	WPN_IGNORED£ºÕı³£·µ»Ø
-//	WPN_SUPERCEDE£º´ò¶ÏDeathMsgÏûÏ¢
-forward WPN_DeathMsg(attacker, victim, headshot, szWeapon[])
+/**
+ * ä¼¤å®³äº‹ä»¶
+ * 
+ * @param victim		å—å®³è€…id
+ * @param inflictor		æ”»å‡»è€…å®ä½“
+ * @param attacker		æ”»å‡»è€…id
+ * @param damage		ä¼¤å®³å€¼
+ * @param damage_type		ä¼¤å®³ç±»å‹
+ * 
+ * @return WPN_IGNOREDï¼šæ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDEï¼šæ‰“æ–­ä¼¤å®³äº‹ä»¶
+ */
+forward WPN_TakeDamage(victim, inflictor, attacker, Float:damage, damage_type);
+
+/**
+ * è¯»å…¥æ•°æ®äº‹ä»¶
+ * 
+ * @param iSlot			æ¨¡æ¿slot
+ * @param i			æ­¦å™¨åºå·
+ * @param key			é”®
+ * @param value			å€¼
+ * 
+ */
+forward WPN_LoadFiles(iSlot, i, key[], value[]);
+
+/**
+ * DeathMsgäº‹ä»¶
+ * 
+ * @param attacker		æ”»å‡»è€…id
+ * @param victim		å—å®³è€…id
+ * @param headshot		æ˜¯å¦çˆ†å¤´
+ * @param szWeapon		å‡»æ€sprï¼ˆå¦‚æœæ˜¯æ–°æªé‚£ä¹ˆæ˜¯æ–°æªçš„sprï¼Œä¸æ˜¯åŸç‰ˆsprï¼‰
+ * 
+ * @return WPN_IGNORED		æ­£å¸¸è¿”å›
+ * @return WPN_SUPERCEDE	æ‰“æ–­DeathMsgæ¶ˆæ¯
+ */
+forward WPN_DeathMsg(attacker, victim, headshot, szWeapon[]);
