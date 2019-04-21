@@ -178,6 +178,7 @@ new g_iAttackHitGroup[33];
 new bool:g_iRoundRestart;
 new g_iEliteShotNumber[33];
 new g_iUserKnifeAttack[33];
+new Float:g_fUserDeploy[33][2];
 
 new g_fwDummyResult;
 new g_fwPrimaryPreAttackPre;
@@ -236,6 +237,7 @@ public plugin_init()
 		continue;
 
 		RegisterHam(Ham_Item_AddToPlayer, g_szGameWeaponClassName[i], "HAM_Item_AddToPlayer_Post", 1);
+		RegisterHam(Ham_Item_Deploy, g_szGameWeaponClassName[i], "HAM_Item_Deploy");
 		RegisterHam(Ham_Item_Deploy, g_szGameWeaponClassName[i], "HAM_Item_Deploy_Post", 1);
 		RegisterHam(Ham_Item_Holster, g_szGameWeaponClassName[i], "HAM_Item_Holster_Post", 1);
 		RegisterHam(Ham_Weapon_PrimaryAttack, g_szGameWeaponClassName[i], "HAM_Weapon_PrimaryAttack");
@@ -2331,6 +2333,19 @@ public HAM_Item_AddToPlayer_Post(iEntity, id)
 	ChangeWeaponList(id, iEntity);
 }
 
+public HAM_Item_Deploy(iEntity)
+{
+	new id = get_pdata_cbase(iEntity, 41, 4);
+	new i = GetWeaponType(iEntity);
+	if (!i)
+	return HAM_IGNORED;
+
+	// AWP无法设置切枪时间的bug
+	g_fUserDeploy[id][0] = get_pdata_float(iEntity, 46);
+	g_fUserDeploy[id][1] = get_pdata_float(iEntity, 47);
+	return HAM_IGNORED;
+}
+
 public HAM_Item_Deploy_Post(iEntity)
 {
 	new id = get_pdata_cbase(iEntity, 41, 4);
@@ -2361,6 +2376,8 @@ public HAM_Item_Deploy_Post(iEntity)
 		else PlayAnim(id, g_iWeaponAnim[id][i][ANIM_DRAW]);
 	}
 	set_pdata_float(id, 83, g_fWeaponDrawTime[id][i], 5);
+	set_pdata_float(iEntity, 46, g_fUserDeploy[id][0]);
+	set_pdata_float(iEntity, 47, g_fUserDeploy[id][1]);
 	if (!g_iWeaponClip[id][i] && g_iWeaponId[id][i] != CSW_HEGRENADE && g_iWeaponId[id][i] != CSW_KNIFE)
 	{
 		fm_cs_set_user_bpammo(id, g_iWeaponId[id][i], get_pdata_int(iEntity, 51, 4));
