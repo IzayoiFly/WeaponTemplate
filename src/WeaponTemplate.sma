@@ -58,7 +58,7 @@ new const g_iSecondCost[MAX_SEC] = { 50, 20, 50, 25, 20, 40 };
 
 new const g_iSecAmount[MAX_SEC] = { 13, 30, 50, 12, 30, 7 };
 
-new const GUNSHOT_DECALS[] = { 41, 42, 43, 44, 45 };
+stock GUNSHOT_DECALS[] = { 41, 42, 43, 44, 45 };
 
 new g_iWeaponAmount;
 new g_iWeaponId[33][MAXWEAPON];
@@ -331,6 +331,12 @@ public plugin_precache()
 	if (file_exists(file)) LoadKnife(file);
 	formatex(file, charsmax(file), "%s/newgrenade.ini", config);
 	if (file_exists(file)) LoadGrenade(file);
+
+	GUNSHOT_DECALS[0] = engfunc(EngFunc_DecalIndex, "{shot1");
+	GUNSHOT_DECALS[1] = engfunc(EngFunc_DecalIndex, "{shot2");
+	GUNSHOT_DECALS[2] = engfunc(EngFunc_DecalIndex, "{shot3");
+	GUNSHOT_DECALS[3] = engfunc(EngFunc_DecalIndex, "{shot4");
+	GUNSHOT_DECALS[4] = engfunc(EngFunc_DecalIndex, "{shot5");
 }
 
 public LoadWeapon(files[])
@@ -1861,6 +1867,7 @@ public fw_ClientCommand(id)
 		{
 			fm_set_user_money(id, get_pdata_int(id, 115, 5) - g_iWeaponDefaultCost[i]);
 			if (fm_cs_get_user_bpammo(id, i) > g_szGameWeaponMaxBpammo[i]) fm_cs_set_user_bpammo(id, i, g_szGameWeaponMaxBpammo[i]);
+			ExecuteForward(g_fwBuyWeaponPost, g_fwDummyResult, iEntity, id, 0);
 		}
 		return FMRES_SUPERCEDE;
 	}
